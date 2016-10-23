@@ -20,8 +20,9 @@ void	*ft_memccpy(void *restrict dst, const void *restrict src, int c,
 
 	s = (unsigned char *)src;
 	d = (unsigned char *)dst;
-	while (n--)
-		if ((*d++ = *s++) == (unsigned char)c)
-			return (d);
+	if (n > 0)
+		while (n--)
+			if ((*d++ = *s++) == (unsigned char)c)
+				return (d);
 	return (0);
 }

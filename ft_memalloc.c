@@ -19,7 +19,7 @@ void	*ft_memalloc(size_t size)
 
 	ptr = (void *)malloc(sizeof(size_t) * size);
 	if (!ptr)
-		return (NULL);
+		return (0);
 	ft_memset(ptr, 0, size);
 	return (ptr);
 }

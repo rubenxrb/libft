@@ -22,5 +22,5 @@ char	*ft_strstr(const char *big, const char *little)
 	while (big[e])
 		if (ft_strnequ(&big[e++], little, ft_strlen(little)))
 			return ((char *)&big[--e]);
-	return (NULL);
+	return (0);
 }
