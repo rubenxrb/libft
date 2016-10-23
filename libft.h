@@ -94,5 +94,6 @@ char		*ft_nextword(const char *s, char c, size_t *ele);
 char		*ft_emptyintstr(int n);
 void		print_bits(unsigned char byte);
 char    	*ft_strrev(const char *s);
+size_t		ft_lstlen(t_list *head);
 
 #endif
