@@ -18,6 +18,6 @@ void	ft_bzero(void *s, size_t n)
 
 	a = s;
 	if (n > 0)
-		while (n-- > 0)
-			*a++ = '\0';
+		while (n--)
+			*a++ = 0;
 }
