@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/01 16:13:29 by rromero           #+#    #+#             */
-/*   Updated: 2016/10/01 16:13:29 by rromero          ###   ########.fr       */
+/*   Created: 2016/10/22 20:24:45 by rromero           #+#    #+#             */
+/*   Updated: 2016/10/22 20:24:46 by rromero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	ft_memdel(void **ap)
+size_t		ft_lstlen(t_list *head)
 {
-	if (ap)
+	size_t	count;
+
+	count = 0;
+	while (head)
 	{
-		free(*ap);
-		*ap = 0;
+		head = head->next;
+		count++;
 	}
+	return (count);
 }
