@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strxcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/27 15:29:28 by rromero           #+#    #+#             */
-/*   Updated: 2016/09/27 15:29:30 by rromero          ###   ########.fr       */
+/*   Created: 2016/10/27 20:31:52 by rromero           #+#    #+#             */
+/*   Updated: 2016/10/27 20:31:53 by rromero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *str)
+char	*ft_strxnew(const char *src, int c)
 {
-	int n;
-	int s;
+	unsigned char	*p;
+	char			*s;
+	size_t			i;
+	size_t			e;
 
-	s = 0;
-	n = 0;
-	while (ft_iswhitespace(*str))
-		str++;
-	if (*str == '+')
-		str++;
-	else if (*str == '-')
-		str = (str + (++s));
-	while (*str && ft_isdigit(*str))
-		n = n * 10 + (*str++ - '0');
-	if (s)
-		return (-n);
-	return (n);
+	i = 0;
+	e = 0;
+	p = (unsigned char *)src;
+	while (p[e])
+		if (p[e++] != (unsigned char)c)
+			i++;
+	s = ft_strnew(i);
+	i = 0;
+	e = 0;
+	while (p[i])
+	{
+		if (p[i] == (unsigned char)c)
+			i++;
+		else
+			s[e++] = p[i++];
+	}
+	s[e] = 0;
+	return (s);
 }

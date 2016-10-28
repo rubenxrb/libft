@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-void	ft_lst_add_back(t_list **alst, t_list *new)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list	*curr;
+	t_list	*node;
 
 	if (!new || !alst)
 		return ;
@@ -22,9 +22,9 @@ void	ft_lst_add_back(t_list **alst, t_list *new)
 		*alst = new;
 	else
 	{
-		curr = *alst;
-		while (curr->next)
-			curr = curr->next;
-		curr->next = new;
+		node = *alst;
+		while (node->next)
+			node = node->next;
+		node->next = new;
 	}
 }
