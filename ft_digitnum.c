@@ -15,10 +15,7 @@ int		ft_digitnum(int n, int base)
 	int		i;
 
 	i = 0;
-	while (n / base)
-	{
-		n = n / base;
+	while ((n = n / base))
 		i++;
-	}
 	return (i + 1);
 }

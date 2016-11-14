@@ -6,7 +6,7 @@
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 15:24:12 by rromero           #+#    #+#             */
-/*   Updated: 2016/10/20 15:24:13 by rromero          ###   ########.fr       */
+/*   Updated: 2016/10/29 02:37:10 by rromero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ char	*ft_itoa(int n)
 	index = ft_digitnum(n, 10);
 	if ((s = (n < 0) ? 1 : 0))
 		index++;
-	p = ft_strnew(index);
-	if (!p)
+	if (!(p = ft_strnew(index)))
 		return (0);
 	index = 0;
-	if (n == 0)
+	if (n == 0 || !(n))
 		p[index++] = '0';
 	while (n)
 	{

@@ -15,18 +15,18 @@
 char	*ft_strrev(const char *s)
 {
 	char	*ps;
-	char	*pd;
+	char	*pf;
 	char	tmp;
 
 	if (!s || !*s)
 		return ((char *)s);
 	ps = (char *)s;
-	pd = ps + (ft_strlen(s) - 1);
-	while (pd > ps)
+	pf = ps + (ft_strlen(s) - 1);
+	while (pf > ps)
 	{
 		tmp = *ps;
-		*ps++ = *pd;
-		*pd-- = tmp;
+		*ps++ = *pf;
+		*pf-- = tmp;
 	}
 	return ((char *)s);
 }
