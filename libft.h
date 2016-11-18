@@ -100,6 +100,7 @@ void				ft_lstadd_back(t_list **alst, t_list *new);
 /*
 EXTRA FUNCTIONS
 */
+void				*ft_realloc(void *ptr, size_t size, size_t new_size);
 int					ft_iswhitespace(int c);
 int					ft_digitnum(int n, int base);
 int					ft_wordcount(char const *s, char c);
@@ -110,5 +111,6 @@ char				*ft_strrev(const char *s);
 size_t				ft_lstlen(t_list *head);
 void				ft_print_memory(const void *addr, size_t size);
 char				*ft_strxnew(const char *src, int c);
+
 
 #endif
