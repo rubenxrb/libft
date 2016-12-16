@@ -13,17 +13,20 @@
 #include "libft.h"
 #include <stdlib.h>
 
+/*
+** Reallocates ptr to the required new_size.
+** if ptr does not exist, new ptr with new_size is returned.
+*/
+
 void	*ft_realloc(void *ptr, size_t size, size_t new_size)
 {
 	void	*new;
 
-	new = 0;
 	new = ft_memalloc(new_size);
 	if (size > 0 && (ptr))
 	{
 		new = ft_memcpy(new, ptr, size);
 		free(ptr);
-		ptr = 0;
 	}
 	return (new);
 }

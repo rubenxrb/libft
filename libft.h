@@ -110,7 +110,6 @@ void				print_bits(unsigned char byte);
 char				*ft_strrev(const char *s);
 size_t				ft_lstlen(t_list *head);
 void				ft_print_memory(const void *addr, size_t size);
-char				*ft_strxnew(const char *src, int c);
 char				*ft_itoa_base(int n, int b);
 void				brainfuck(const char *input);
 
