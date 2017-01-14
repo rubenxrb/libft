@@ -77,7 +77,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
-void				ft_putchar(char c);
+void				ft_putchar(int c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
@@ -110,7 +110,6 @@ void				print_bits(unsigned char byte);
 char				*ft_strrev(const char *s);
 size_t				ft_lstlen(t_list *head);
 void				ft_print_memory(const void *addr, size_t size);
-char				*ft_itoa_base(int n, int b);
 void				brainfuck(const char *input);
 
 #endif
