@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"	// lstnew, lstdelone, lstdel, lstadd & lstiter
+#include <stdlib.h>
 
 t_node		*ft_lstnew(void const *data, size_t data_size)
 {
 	t_node *head;
 
-	head = (t_node *)malloc(sizeof(t_node));
+	head = ft_memalloc(sizeof(t_node));
 	if (!head)
 		return (0);
 	if (!data)
@@ -26,7 +27,7 @@ t_node		*ft_lstnew(void const *data, size_t data_size)
 	}
 	else
 	{
-		head->data = malloc(data_size);
+		head->data = ft_memalloc(data_size);
 		if (!head->data)
 		{
 			free(head);

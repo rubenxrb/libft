@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h" //memalloc, bzero, memset, memdel & realloc
+#include <stdlib.h>
 
 void	*ft_memalloc(size_t size)
 {

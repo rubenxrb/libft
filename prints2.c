@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // putstr-fd, putendl-fd, putnbr, putnbr-fd & print-bits
+#include "libft.h" // putstr-fd, putendl-fd, putnbr, putnbr-fd & putendl
 
 void	ft_putstr_fd(char const *s, int fd)
 {
@@ -63,20 +63,11 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(n + '0', fd);
 }
 
-void	print_bits(unsigned char octet)
+void	ft_putendl(char const *s)
 {
-	int d;
-
-	d = 128;
-	while (d)
+	if (s)
 	{
-		if (d <= octet)
-		{
-			write(1, "1", 1);
-			octet = octet % d;
-		}
-		else
-			write(1, "0", 1);
-		d /= 2;
+		ft_putstr(s);
+		ft_putchar('\n');
 	}
 }

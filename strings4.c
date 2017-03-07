@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h" // strdel, strclr, striter, striteri, strmap
+#include <stdlib.h>
 
 void	ft_strdel(char **as)
 {

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // printc, putchar, putchar-fd, putstr & putendl
+#include "libft.h" // printc, putchar, putchar-fd, putstr & print-bits
+#include <unistd.h>
 
 static void ft_printc(char c, int fd)
 {
@@ -72,11 +73,20 @@ void	ft_putstr(char const *s)
 			ft_putchar(*s++);
 }
 
-void	ft_putendl(char const *s)
+void	print_bits(unsigned char octet)
 {
-	if (s)
+	int d;
+
+	d = 128;
+	while (d)
 	{
-		ft_putstr(s);
-		ft_putchar('\n');
+		if (d <= octet)
+		{
+			write(1, "1", 1);
+			octet = octet % d;
+		}
+		else
+			write(1, "0", 1);
+		d /= 2;
 	}
 }
