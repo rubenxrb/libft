@@ -11,8 +11,7 @@ STD = 	memptrs{,2,3}.c			\
 		linkdlst{,2}.c			\
 		btree{,}.c				\
 		nbtree.c				\
-		misc.c					\
-		get_next_line.c
+		misc.c					
 
 OBJ =$(STD:.c=.o)
 
