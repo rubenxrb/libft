@@ -1,69 +1,109 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/27 15:46:18 by rromero           #+#    #+#             */
-/*   Updated: 2016/10/12 20:07:48 by rromero          ###   ########.fr       */
+/*   Created: 2017/03/05 02:09:07 by rromero           #+#    #+#             */
+/*   Updated: 2017/03/05 02:09:08 by rromero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
+//# include "get_next_line.h"
 
-typedef struct		s_list
+typedef struct		s_node
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
+	void			*data;
+	size_t			d_size;
+	struct s_node	*next;
+	struct s_node	*prev;
+}					t_node;
 
-/*
- * PART 1 FUNCTIONS
- */
-void				*ft_memset(void *b, int c, size_t len);
-void				ft_bzero(void *s, size_t n);
+typedef struct		s_bnode
+{
+	void			*data;
+	size_t			d_size;
+	struct bt_node	*left;
+	struct bt_node	*right;
+}					t_bnode;
+
+typedef struct		s_nbnode
+{
+	int				num;
+	struct s_nbnode	*left;
+	struct s_nbnode	*right;
+}					tn_bnode;
+
+typedef struct		s_lst
+{
+	t_node			*head;
+	t_node			*tail;
+	size_t			size;
+}					t_lst;
+
+typedef struct		s_btree
+{
+	void			*root;
+	void			*left;
+	void			*right;
+}					t_tree;
+
+// memptrs
+void				*ft_memalloc(size_t size);
+void				*ft_realloc(void *ptr, size_t size, size_t new_size);
+void				*ft_memset(void *p, int c, size_t size);
+void				ft_memdel(void **ap);
+void				ft_bzero(void *p, size_t size);
 void				*ft_memcpy(void *restrict dst, const void *restrict src,
-					size_t n);
+					size_t size);
 void				*ft_memccpy(void *restrict dst, const void *restrict src,
-					int c, size_t n);
+					int c, size_t size);
 void				*ft_memmove(void *dst, const void *src, size_t len);
-void				*ft_memchr(const void *s, int c, size_t n);
-void				*ft_memrchr(const void *s, int c, size_t n);
+void				*ft_memchr(const void *p, int c, size_t n);
+void				*ft_memrchr(const void *p, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+
+//	convert
+int					ft_atoi(const char *str);
+char				*ft_itoa(int n);
+char				*ft_itoa_base(int n, int base);
+int					ft_toupper(int c);
+int					ft_tolower(int c);
+char				*ft_hextoa(int c); /* need */
+
+//	identifiers
+int					ft_isalpha(int c);
+int					ft_isdigit(int c);
+int					ft_isalnum(int c);
+int					ft_isascii(int c);
+int					ft_isprint(int c);
+int					ft_isblank(int c);
+int					ft_isemoji(int c); /* need */
+
+//	strings
 size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s1);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
+char				*ft_strnew(size_t size);
 char				*ft_strcat(char *restrict s1, const char *restrict s2);
 char				*ft_strncat(char *restrict s1, const char *restrict s2,
 					size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
-char				*ft_strstr(const char *big, const char *little);
-char				*ft_strnstr(const char *big, const char *little,
+char				*ft_strstr(const char *big, const char *small);
+char				*ft_strnstr(const char *big, const char *small,
 					size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_atoi(const char *str);
-int					ft_isalpha(int c);
-int					ft_isdigit(int c);
-int					ft_isalnum(int c);
-int					ft_isascii(int c);
-int					ft_isprint(int c);
-int					ft_toupper(int c);
-int					ft_tolower(int c);
-
-/*
-PART 2 FUNCTIONS
-*/
-void				*ft_memalloc(size_t size);
-void				ft_memdel(void **ap);
-char				*ft_strnew(size_t size);
+char				*ft_strrev(const char *s);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
 void				ft_striter(char *s, void (*f)(char *));
@@ -76,40 +116,40 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-char				*ft_itoa(int n);
+
+//	prints
 void				ft_putchar(int c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
-void				ft_putnbr(int n);
-void				ft_putchar_fd(char c, int fd);
+void				ft_putchar_fd(int c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
+void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_print_bits(unsigned char byte);
+void				ft_putnbrnl(int n); /* need */
+void				ft_puthex(int n); /* need */
+void				ft_puthexnl(int n); /* need */
 
-/*
-BONUS FUNCTIONS
-*/
-t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void				ft_lstadd_back(t_list **alst, t_list *new);
+//	linkedlst
+t_node				*ft_lstnew(void const *data, size_t d_size);
+void				ft_lstdel(t_node **head, void (*bzero)(void *, size_t));
+void				ft_lstadd(t_node **head, t_node *new);
+void				ft_lstiter(t_node *head, void (*f)(t_node *node));
+t_node				*ft_lstmap(t_node *head, t_node *(*f)(t_node *node));
+void				ft_lstadd_back(t_node **head, t_node *new);
+size_t				ft_lstlen(t_node *head);
+t_node				*ft_addnodeback(t_node *tail, t_node *new); /* need */
 
-/*
-EXTRA FUNCTIONS
-*/
-void				*ft_realloc(void *ptr, size_t size, size_t new_size);
-int					ft_iswhitespace(int c);
+// binarytree
+t_bnode				*bt_new(void const *data, size_t d_size);
+t_bnode				*bt_lookup(t_bnode *tree, void const *data, size_t d_size);
+t_bnode				*bt_insert(t_bnode *tree, void const *data, size_t d_size);
+tn_bnode			*btn_new(const int n);
+int					btn_lookup(tn_bnode *tree, const int n);
+tn_bnode			*btn_insert(tn_bnode *tree, const int n);
+
+//	misc
 int					ft_digitnum(int n, int base);
-int					ft_wordcount(char const *s, char c);
-char				*ft_nextword(const char *s, char c, size_t *ele);
-char				*ft_emptyintstr(int n);
-void				print_bits(unsigned char byte);
-char				*ft_strrev(const char *s);
-size_t				ft_lstlen(t_list *head);
-void				ft_print_memory(const void *addr, size_t size);
-void				brainfuck(const char *input);
 
 #endif
