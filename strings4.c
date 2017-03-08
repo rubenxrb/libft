@@ -11,15 +11,10 @@
 /* ************************************************************************** */
 
 #include "libft.h" // strdel, strclr, striter, striteri, strmap
-#include <stdlib.h>
 
 void	ft_strdel(char **as)
 {
-	if (as)
-	{
-		free(*as);
-		*as = 0;
-	}
+	ft_memdel((void **)as);
 }
 
 void	ft_strclr(char *s)

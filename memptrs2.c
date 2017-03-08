@@ -75,7 +75,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	return (0);
 }
 
-void		*ft_memrchr(const void *s, int c, size_t n)
+void	*ft_memrchr(const void *s, int c, size_t n)
 {
 	unsigned char	*p;
 

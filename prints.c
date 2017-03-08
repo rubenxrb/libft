@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // printc, putchar, putchar-fd, putstr & print-bits
+#include "libft.h" // printc (write), putchar, putchar-fd, putstr & print-bits
 #include <unistd.h>
 
 static void ft_printc(char c, int fd)

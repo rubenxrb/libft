@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"	// lstnew, lstdelone, lstdel, lstadd & lstiter
-#include <stdlib.h>
 
 t_node		*ft_lstnew(void const *data, size_t data_size)
 {
@@ -30,7 +29,7 @@ t_node		*ft_lstnew(void const *data, size_t data_size)
 		head->data = ft_memalloc(data_size);
 		if (!head->data)
 		{
-			free(head);
+			ft_memdel((void **)data);
 			return (0);
 		}
 		ft_memcpy(head->data, data, data_size);
