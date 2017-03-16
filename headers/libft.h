@@ -12,15 +12,26 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-#include <stddef.h>
+# include <stddef.h>
+
+# include "get_next_line.h"
+//# include "ft_printf.h"
+//# include "ft_ls.h"
 
 typedef struct		s_node
 {
 	void			*data;
 	size_t			d_size;
 	struct s_node	*next;
-	struct s_node	*prev;
 }					t_node;
+
+typedef struct		s_dlnode
+{
+	void			*data;
+	size_t			d_size;
+	struct s_node	*next;
+	struct s_node	*prev;
+}					t_dlnode;
 
 typedef struct		s_bnode
 {
@@ -39,8 +50,8 @@ typedef struct		s_nbnode
 
 typedef struct		s_lst
 {
-	t_node			*head;
-	t_node			*tail;
+	void			*head;
+	void			*tail;
 	size_t			size;
 }					t_lst;
 
@@ -72,7 +83,8 @@ char				*ft_itoa(int n);
 char				*ft_itoa_base(int n, int base);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-char				*ft_hextoa(int c); /* need */
+char				*ft_hextoa(int n, size_t prec); /* need */
+int					uctoutf8(const char *dest, wchar_t ch);
 
 //	identifiers
 int					ft_isalpha(int c);
@@ -113,6 +125,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+char				*ft_strinsrt(const char *dst, size_t n, const char *src);
 
 //	prints
 void				ft_putchar(int c);
@@ -124,9 +137,10 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_print_bits(unsigned char byte);
-void				ft_putnbrnl(int n); /* need */
+void				ft_putnbrnl(int n);
 void				ft_puthex(int n); /* need */
 void				ft_puthexnl(int n); /* need */
+void				set_color(int c);
 
 //	linkedlst
 t_node				*ft_lstnew(void const *data, size_t d_size);

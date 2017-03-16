@@ -10,10 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // hextoa, <empty>, <empty>, <empty> & <empty>
+#include "libft.h" // hextoa, utoutf8, <empty>, <empty> & <empty>
+#include <stdio.h>
 
-char		*ft_hextoa(int c)
+char	*ft_hextoa(int n, size_t prec)
 {
-	(void)c;
-	return 0;
+	char	*hex;
+	char	*num;
+	char	*z;
+
+	num = ft_itoa_base(n, 16);
+	hex = num;
+	if (prec)
+	{
+		z = ft_strnew(prec);
+		(void)ft_memset(z, '0', prec);
+		hex = ft_strinsrt(num, 0, z);
+	}
+	return ft_strinsrt(hex, 0, "0x");
+}
+
+int		uctoutf8(const char *dest, wchar_t ch)
+{
+	unsigned char	*p;
+
+	p = (unsigned char *)dest;
+	if (ch < 0x80)
+		*p++ = (unsigned char)(ch);
+	else if (ch < 0x800)
+	{
+		*p++ = (unsigned char)((ch >> 6) | 0xC0);
+		*p++ = (unsigned char)((ch & 0x3F) | 0x80);
+	}
+	else if (ch < 0x10000)
+	{
+		*p++ = (unsigned char)(((ch >> 12)) | 0xE0);
+		*p++ =  (unsigned char)(((ch >> 6) & 0x3F) | 0x80);
+		*p++ =  (unsigned char)((ch & 0x3F) | 0x80);
+	}
+	else if (ch < 0x110000)
+	{
+		*p++ = (unsigned char)(((ch >> 18)) | 0xF0);
+		*p++ = (unsigned char)(((ch >> 12) & 0x3F) | 0x80);
+		*p++ = (unsigned char)(((ch >> 6) & 0x3F) | 0x80);
+		*p++ = (unsigned char)((ch & 0x3F) | 0x80);
+	}
+	return ((int)p != (int)dest ? 1 : 0);
 }

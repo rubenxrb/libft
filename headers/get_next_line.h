@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prints3.c                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 01:38:05 by rromero           #+#    #+#             */
-/*   Updated: 2017/03/05 01:38:05 by rromero          ###   ########.fr       */
+/*   Created: 2016/11/14 14:34:43 by rromero           #+#    #+#             */
+/*   Updated: 2017/03/06 21:19:46 by rromero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"	// putnbr-nl, puthex, puthex-nl, set-color & <empty>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 16
 
-void	ft_putnbrnl(int c)
+typedef struct	s_file
 {
-	if (c)
-	{
-		ft_putnbr(c);
-		ft_putchar('\n');
-	}
-}
+	int			fd;
+	short		ret;
+	char		*tmp;
+	char		*line;
+	long long	l_len;
+}				t_file;
 
-void	ft_puthex(int c)
-{
-	(void)c;
-}
+int				get_next_line(const int fd, char **line);
 
-void	ft_puthexnl(int c)
-{
-	if (c)
-	{
-		ft_puthex(c);
-		ft_putchar('\n');
-	}
-}
-
-void	set_color(int c)
-{
-	ft_putstr("\033[");
-	ft_putnbr(c);
-	ft_putchar('m');
-}
+#endif

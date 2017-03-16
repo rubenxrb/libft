@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // strtrim, strsplit, <wordcount>, <nextword> & <empty>
+#include "libft.h" // strtrim, strsplit, <wordcount>, <nextword> & strinsrt
 
 char		*ft_strtrim(char const *s)
 {
@@ -83,4 +83,16 @@ char		**ft_strsplit(char const *s, char c)
 		str[index++] = nextword(s, c, &element);
 	str[index] = 0;
 	return (str);
+}
+
+char		*ft_strinsrt(const char *dst, size_t n, const char *src)
+{
+	char	*str;
+
+	if (!dst || (n > ft_strlen(dst)))
+		return (0);
+	str = ft_strnew(ft_strlen(dst) + ft_strlen(src));
+	(void)ft_strncpy(str, dst, n);
+	(void)ft_strcpy(str + n, src);
+	return (ft_strcat(str, dst + n));
 }

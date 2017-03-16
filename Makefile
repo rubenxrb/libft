@@ -1,12 +1,13 @@
 LIB = libft.a
-GNL = libftgnl.a
-GNLSRC = ./get_next_line/get_next_line.c
-GNLOBJ = get_next_line.o
+IHDRS = -Iheaders
 CC = gcc
 CFLAGS = -c -Wall -Werror -Wextra
+ODIR = ./objs/
 RM = /bin/rm
 
-STD = 	memptrs{,2,3}.c			\
+GNLSRC = ./get_next_line/get_next_line.c
+
+LSRC = 	memptrs{,2,3}.c			\
 		convert{,2}.c			\
 		identifiers{,2}.c		\
 		strings{,2,3,4,5,6}.c	\
@@ -16,21 +17,35 @@ STD = 	memptrs{,2,3}.c			\
 		nbtree.c				\
 		misc.c
 
-OBJ =$(STD:.c=.o)
+OSRC = $(LSRC:.c=.o)
+OGNL = $(addprefix $(ODIR),$(GNLSRC:.c=.o))
 
 all: $(LIB)
+
 $(LIB):
-	@$(CC) $(CFLAGS) $(STD) $(GNLSRC)
-	@ar rc $(LIB) $(OBJ) $(GNLOBJ)
+	@$(CC) $(IHDRS) $(CFLAGS) $(LSRC) $(GNLSRC)
+	@ar rc $(LIB) $(OSRC) get_next_line.o
 	@ranlib $(LIB)
 	@echo "libft [built]"
 
+.c.o:
+	@$(CC) $(CFLAGS) $< -o $@
+
+objs: libft gnl
+
+libft:
+	@$(CC) $(IHDRS) $(CFLAGS) $(LSRC)
+
+gnl:
+	@$(CC) $(IHDRS) $(CFLAGS) $(GNLSRC)
+
 clean:
-	@$(RM) -f $(OBJ)
+	@$(RM) -f $(OSRC)
+	@$(RM) -f get_next_line.o
 	@echo "objects [deleted]"
 
 fclean: clean
-	@$(RM) $(LIB)
+	@$(RM) -rf $(LIB)
 	@echo "libft.a [deleted]"
 
 re: fclean all
