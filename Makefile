@@ -18,13 +18,13 @@ LSRC = 	memptrs{,2,3}.c			\
 		misc.c
 
 OSRC = $(LSRC:.c=.o)
-OGNL = $(addprefix $(ODIR),$(GNLSRC:.c=.o))
+OGNL = get_next_line.o
 
 all: $(LIB)
 
 $(LIB):
 	@$(CC) $(IHDRS) $(CFLAGS) $(LSRC) $(GNLSRC)
-	@ar rc $(LIB) $(OSRC) get_next_line.o
+	@ar rc $(LIB) $(OSRC) $(OGNL)
 	@ranlib $(LIB)
 	@echo "libft [built]"
 
@@ -41,7 +41,7 @@ gnl:
 
 clean:
 	@$(RM) -f $(OSRC)
-	@$(RM) -f get_next_line.o
+	@$(RM) -f $(OGNL)
 	@echo "objects [deleted]"
 
 fclean: clean
