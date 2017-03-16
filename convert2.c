@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h" // hextoa, utoutf8, <empty>, <empty> & <empty>
-#include <stdio.h>
 
 char	*ft_hextoa(int n, size_t prec)
 {

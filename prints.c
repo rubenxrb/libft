@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // printc (write), putchar, putchar-fd, putstr & print-bits
+#include "libft.h" // putchar, putchar-fd, putstr, print-bits & <empty>
 #include <unistd.h>
-#include <stdio.h>
-#include <locale.h>
 
 void	ft_putchar(int _c)
 {
@@ -29,31 +27,6 @@ void	ft_putchar(int _c)
 	else if (_c < 0x110000)
 		write(1, &c, 4);
 }
-
-/*
-
-if (c < 0x80)
-	ft_printc((char)c, 1);
-else if (c < 0x800)
-{
-	ft_printc((char)0xC0 | (c >> 6), 1);
-	ft_printc((char)0x80 | (c & 0x3F), 1);
-}
-else if (c < 0x10000)
-{
-	ft_printc((char)0xE0 | (c >> 12), 1);
-	ft_printc((char)0x80 | (c >> 6 & 0x3F), 1);
-	ft_printc((char)0x80 | (c & 0x3F), 1);
-}
-else
-{
-	ft_printc((char)0xF0 | (c >> 18), 1);
-	ft_printc((char)0x80 | (c >> 12 & 0x3F), 1);
-	ft_printc((char)0x80 | (c >> 6 & 0x3F), 1);
-	ft_printc((char)0x80 | (c & 0x3F), 1);
-}
-
-*/
 
 void	ft_putchar_fd(int _c, int fd)
 {
