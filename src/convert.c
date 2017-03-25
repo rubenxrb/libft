@@ -27,9 +27,7 @@ int		ft_atoi(const char *str)
 		str = (str + (++s));
 	while (*str && ft_isdigit(*str))
 		n = n * 10 + (*str++ - '0');
-	if (s)
-		return (-n);
-	return (n);
+	return ((s) ? -n : n);
 }
 
 char	*ft_itoa(int n)
