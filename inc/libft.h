@@ -6,7 +6,7 @@
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/05 02:09:07 by rromero           #+#    #+#             */
-/*   Updated: 2017/03/05 02:09:08 by rromero          ###   ########.fr       */
+/*   Updated: 2017/03/24 18:43:20 by rromero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ typedef struct		s_dlnode
 {
 	void			*data;
 	size_t			d_size;
-	struct s_node	*next;
-	struct s_node	*prev;
+	struct s_dlnode	*next;
+	struct s_dlnode	*prev;
 }					t_dlnode;
 
 typedef struct		s_bnode
 {
 	void			*data;
 	size_t			d_size;
-	struct bt_node	*left;
-	struct bt_node	*right;
+	struct s_bnode	*left;
+	struct s_bnode	*right;
 }					t_bnode;
 
 typedef struct		s_nbnode
