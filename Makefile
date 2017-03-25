@@ -29,7 +29,6 @@ all: $(LIB)
 
 $(LIB): src adds
 	@ar rc $(LIB) $(ADDO)
-	@echo "libft.a [created]"
 
 src: mkobj $(OBJ) comp
 $(ODIR)%.o:$(SDIR)%.c
@@ -50,11 +49,9 @@ mkadds: mkobj
 
 clean:
 	@$(RM) -rf $(ODIR)
-	@echo "objects [deleted]"
 
 fclean: clean
 	@$(RM) -rf $(LIB)
-	@echo "libft.a [deleted]"
 
 re: fclean all
 .PHONY: all clean fclean re
