@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h" // hextoa, utoutf8, <empty>, <empty> & <empty>
+#include <stdio.h>
 
 char	*ft_hextoa(int n, size_t prec)
 {
@@ -55,4 +56,26 @@ int		uctoutf8(const char *dest, wchar_t ch)
 		*p++ = (unsigned char)((ch & 0x3F) | 0x80);
 	}
 	return ((int)p != (int)dest ? 1 : 0);
+}
+
+int		ft_hextoi(const char *hex)
+{
+	t_byte	hex_p;
+	int		ret;
+
+	if (!hex)
+		return (0);
+	ret = 0;
+	while (*hex)
+	{
+		hex_p = *hex++;
+		if (hex_p >= '0' && hex_p <= '9')
+			hex_p = hex_p - '0';
+		else if (hex_p >= 'a' && hex_p <='f')
+			hex_p = hex_p - 'a' + 10;
+		else if (hex_p >= 'A' && hex_p <='F')
+			hex_p = hex_p - 'A' + 10;
+		 ret = (ret << 4) | (hex_p & 0xF);
+	}
+	return (ret);
 }

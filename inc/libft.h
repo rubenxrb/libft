@@ -18,6 +18,8 @@
 //# include "ft_printf.h"
 //# include "ft_ls.h"
 
+typedef unsigned char	t_byte;
+
 typedef struct		s_node
 {
 	void			*data;
@@ -85,6 +87,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_hextoa(int n, size_t prec); /* need */
 int					uctoutf8(const char *dest, wchar_t ch);
+int					ft_hextoi(const char *hex);
 
 //	identifiers
 int					ft_isalpha(int c);
