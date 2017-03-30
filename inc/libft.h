@@ -18,6 +18,9 @@
 //# include "ft_printf.h"
 //# include "ft_ls.h"
 
+typedef unsigned char	t_byte;
+
+// data structure nodes
 typedef struct		s_node
 {
 	void			*data;
@@ -48,6 +51,14 @@ typedef struct		s_nbnode
 	struct s_nbnode	*right;
 }					tn_bnode;
 
+typedef struct		s_snode
+{
+	void			*data;
+	size_t			d_size;
+	struct s_snode	*prev;
+}					t_snode;
+
+// data structures
 typedef struct		s_lst
 {
 	void			*head;
@@ -61,6 +72,12 @@ typedef struct		s_btree
 	void			*left;
 	void			*right;
 }					t_tree;
+
+typedef struct		s_stack
+{
+	struct s_snode	*top;
+	size_t			size;
+}					t_stack;
 
 // memptrs
 void				*ft_memalloc(size_t size);
@@ -85,6 +102,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_hextoa(int n, size_t prec); /* need */
 int					uctoutf8(const char *dest, wchar_t ch);
+int					ft_hextoi(const char *hex);
 
 //	identifiers
 int					ft_isalpha(int c);
@@ -93,6 +111,7 @@ int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_isblank(int c);
+int					ft_ishex(int c);
 int					ft_isemoji(int c); /* need */
 
 //	strings
@@ -158,6 +177,13 @@ t_bnode				*bt_insert(t_bnode *tree, void const *data, size_t d_size);
 tn_bnode			*btn_new(const int n);
 int					btn_lookup(tn_bnode *tree, const int n);
 tn_bnode			*btn_insert(tn_bnode *tree, const int n);
+
+// stack
+t_snode				*snode_new(void const *data, size_t d_size);
+t_snode				*stack_push(t_snode *top, t_snode *new);
+t_snode				*stack_pop(t_snode *top);
+t_snode				*stack_lookup(t_snode *top, t_snode *node);
+int					snode_del(t_snode *node);
 
 //	misc
 int					ft_digitnum(int n, int base);

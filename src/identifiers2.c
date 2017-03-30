@@ -18,6 +18,11 @@ int		ft_isblank(int c)
 	|| c == '\r'));
 }
 
+int		ft_ishex(int c)
+{
+	return ((c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f') || ft_isdigit(c));
+}
+
 int		ft_isemoji(int c)
 {
 	(void)c;

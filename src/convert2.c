@@ -56,3 +56,25 @@ int		uctoutf8(const char *dest, wchar_t ch)
 	}
 	return ((char *)p == (char *)dest);
 }
+
+int		ft_hextoi(const char *hex)
+{
+	t_byte	hex_p;
+	int		ret;
+
+	if (!hex)
+		return (0);
+	ret = 0;
+	while (*hex)
+	{
+		hex_p = *hex++;
+		if (hex_p >= '0' && hex_p <= '9')
+			hex_p = hex_p - '0';
+		else if (hex_p >= 'a' && hex_p <='f')
+			hex_p = hex_p - 'a' + 10;
+		else if (hex_p >= 'A' && hex_p <='F')
+			hex_p = hex_p - 'A' + 10;
+		 ret = (ret << 4) | (hex_p & 0xF);
+	}
+	return (ret);
+}
