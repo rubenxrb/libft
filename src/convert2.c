@@ -54,7 +54,7 @@ int		uctoutf8(const char *dest, wchar_t ch)
 		*p++ = (unsigned char)(((ch >> 6) & 0x3F) | 0x80);
 		*p++ = (unsigned char)((ch & 0x3F) | 0x80);
 	}
-	return ((char *)p == (char *)dest);
+	return ((void *)p == (void *)dest);
 }
 
 int		ft_hextoi(const char *hex)
