@@ -54,5 +54,5 @@ int		uctoutf8(const char *dest, wchar_t ch)
 		*p++ = (unsigned char)(((ch >> 6) & 0x3F) | 0x80);
 		*p++ = (unsigned char)((ch & 0x3F) | 0x80);
 	}
-	return ((int)p != (int)dest ? 1 : 0);
+	return ((char *)p == (char *)dest);
 }
