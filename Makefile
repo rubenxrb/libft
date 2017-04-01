@@ -13,14 +13,13 @@ ADDIR = $(addprefix $(SDIR),$(ADD))
 ADDS = $(wildcard $(ADDIR)/*.c)
 ADDO = $(subst $(SDIR),$(ODIR),$(ADDS:.c=.o))
 SRCN = 	memptrs.c memptrs2.c memptrs3.c		\
-		convert.c convert2.c				\
-		identifiers.c identifiers2.c		\
-		strings.c strings2.c strings3.c		\
-		strings4.c strings5.c strings6.c	\
-		prints.c prints2.c prints3.c		\
-		linkdlst.c linkdlst2.c				\
-		btree.c	nbtree.c misc.c				\
-		stack.c
+	convert.c convert2.c			\
+	identifiers.c identifiers2.c		\
+	strings.c strings2.c strings3.c		\
+	strings4.c strings5.c strings6.c	\
+	prints.c prints2.c prints3.c		\
+	linkdlst.c linkdlst2.c			\
+	btree.c	nbtree.c misc.c stack.c
 
 OBJN =	$(SRCN:.c=.o)
 SRC =	$(addprefix $(SDIR),$(SRCN))
@@ -30,6 +29,7 @@ all: $(LIB)
 
 $(LIB): src adds
 	@ar rc $(LIB) $(ADDO)
+	@printf "\x1b[32m[./libft.a] <compiled>\n\x1b[0m"
 
 src: mkobj $(OBJ) comp
 $(ODIR)%.o:$(SDIR)%.c
@@ -50,9 +50,11 @@ mkadds: mkobj
 
 clean:
 	@$(RM) -rf $(ODIR)
+	@printf "\x1b[36m[./obj/] <removed>\n\x1b[0m"
 
 fclean: clean
 	@$(RM) -rf $(LIB)
+	@printf "\x1b[31m[./libft.a] <removed>\n\x1b[0m"
 
 re: fclean all
 .PHONY: all clean fclean re
