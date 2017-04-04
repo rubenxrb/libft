@@ -26,5 +26,5 @@ int		ft_ishex(int c)
 int		ft_isemoji(int c)
 {
 	(void)c;
-	return 0;
+	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_snode				*snode_new(void const *data, size_t d_size)
+t_snode		*snode_new(void const *data, size_t d_size)
 {
 	t_snode	*new;
 
@@ -39,7 +39,7 @@ t_snode				*snode_new(void const *data, size_t d_size)
 	return (new);
 }
 
-t_snode				*stack_push(t_snode *top, t_snode *new)
+t_snode		*stack_push(t_snode *top, t_snode *new)
 {
 	if (!top || !new)
 		return (0);
@@ -47,7 +47,7 @@ t_snode				*stack_push(t_snode *top, t_snode *new)
 	return (new);
 }
 
-t_snode				*stack_pop(t_snode *top)
+t_snode		*stack_pop(t_snode *top)
 {
 	t_snode	*prev;
 
@@ -58,7 +58,7 @@ t_snode				*stack_pop(t_snode *top)
 	return (prev);
 }
 
-t_snode				*stack_lookup(t_snode *top, t_snode *node)
+t_snode		*stack_lookup(t_snode *top, t_snode *node)
 {
 	if (!top || !node)
 		return (0);
@@ -67,7 +67,7 @@ t_snode				*stack_lookup(t_snode *top, t_snode *node)
 	return (top == node ? node : 0);
 }
 
-int				snode_del(t_snode *node)
+int			snode_del(t_snode *node)
 {
 	if (!node)
 		return (0);

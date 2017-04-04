@@ -12,7 +12,7 @@
 
 #include "libft.h"	// lstnew, lstdelone, lstdel, lstadd & lstiter
 
-t_node		*ft_lstnew(void const *data, size_t data_size)
+t_node	*ft_lstnew(void const *data, size_t data_size)
 {
 	t_node *head;
 

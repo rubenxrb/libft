@@ -16,7 +16,7 @@ t_bnode				*bt_new(void const *data, size_t d_size)
 {
 	(void)data;
 	(void)d_size;
-	return 0;
+	return (0);
 }
 
 t_bnode				*bt_lookup(t_bnode *tree, void const *data, size_t d_size)
@@ -24,7 +24,7 @@ t_bnode				*bt_lookup(t_bnode *tree, void const *data, size_t d_size)
 	(void)tree;
 	(void)data;
 	(void)d_size;
-	return 0;
+	return (0);
 }
 
 t_bnode				*bt_insert(t_bnode *tree, void const *data, size_t d_size)
@@ -32,5 +32,5 @@ t_bnode				*bt_insert(t_bnode *tree, void const *data, size_t d_size)
 	(void)tree;
 	(void)data;
 	(void)d_size;
-	return 0;
+	return (0);
 }

@@ -12,22 +12,22 @@
 
 #include "libft.h"	// <*btn-new>, <*btn-lookup>, <*btn-insert> & <empty>
 
-tn_bnode			*btn_new(const int n)
+t_nbnode			*btn_new(const int n)
 {
 	(void)n;
-	return 0;
+	return (0);
 }
 
-int					btn_lookup(tn_bnode *tree, const int n)
+int					btn_lookup(t_nbnode *tree, const int n)
 {
 	(void)tree;
 	(void)n;
-	return 0;
+	return (0);
 }
 
-tn_bnode			*btn_insert(tn_bnode *tree, const int n)
+t_nbnode			*btn_insert(t_nbnode *tree, const int n)
 {
 	(void)tree;
 	(void)n;
-	return 0;
+	return (0);
 }

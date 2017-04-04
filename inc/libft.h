@@ -49,7 +49,7 @@ typedef struct		s_nbnode
 	int				num;
 	struct s_nbnode	*left;
 	struct s_nbnode	*right;
-}					tn_bnode;
+}					t_nbnode;
 
 typedef struct		s_snode
 {
@@ -174,9 +174,9 @@ t_node				*ft_addnodeback(t_node *tail, t_node *new); /* need */
 t_bnode				*bt_new(void const *data, size_t d_size);
 t_bnode				*bt_lookup(t_bnode *tree, void const *data, size_t d_size);
 t_bnode				*bt_insert(t_bnode *tree, void const *data, size_t d_size);
-tn_bnode			*btn_new(const int n);
-int					btn_lookup(tn_bnode *tree, const int n);
-tn_bnode			*btn_insert(tn_bnode *tree, const int n);
+t_nbnode			*btn_new(const int n);
+int					btn_lookup(t_nbnode *tree, const int n);
+t_nbnode			*btn_insert(t_nbnode *tree, const int n);
 
 // stack
 t_snode				*snode_new(void const *data, size_t d_size);

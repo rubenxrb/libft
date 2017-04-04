@@ -34,7 +34,7 @@ char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
 	return (s1);
 }
 
-size_t		ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	dlen;
