@@ -144,6 +144,9 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strinsrt(const char *dst, size_t n, const char *src);
+size_t				count_words(const char *str);
+char				*get_next_word(const char *s, char **word);
+char				**split_blnk(const char *str);
 
 //	prints
 void				ft_putchar(int c);

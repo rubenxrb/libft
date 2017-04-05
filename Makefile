@@ -12,13 +12,14 @@ ADD = get_next_line
 ADDIR = $(addprefix $(SDIR),$(ADD))
 ADDS = $(wildcard $(ADDIR)/*.c)
 ADDO = $(subst $(SDIR),$(ODIR),$(ADDS:.c=.o))
-SRCN = 	memptrs.c memptrs2.c memptrs3.c		\
-	convert.c convert2.c			\
+SRCN = 	memptrs.c memptrs2.c memptrs3.c	\
+	convert.c convert2.c				\
 	identifiers.c identifiers2.c		\
 	strings.c strings2.c strings3.c		\
 	strings4.c strings5.c strings6.c	\
+	strings7.c							\
 	prints.c prints2.c prints3.c		\
-	linkdlst.c linkdlst2.c			\
+	linkdlst.c linkdlst2.c				\
 	btree.c	nbtree.c misc.c stack.c
 
 OBJN =	$(SRCN:.c=.o)
