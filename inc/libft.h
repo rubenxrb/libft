@@ -112,6 +112,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_isblank(int c);
 int					ft_ishex(int c);
+int					ft_ishexstr(const char *hex);
 int					ft_isemoji(int c); /* need */
 
 //	strings

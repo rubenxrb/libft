@@ -28,3 +28,20 @@ int		ft_isemoji(int c)
 	(void)c;
 	return (0);
 }
+
+int		ft_ishexstr(const char *hex)
+{
+	char	*t;
+
+	if (!hex)
+		return (0);
+	t = (char *)hex;
+	if (!ft_strncmp(hex, "0x", 2))
+		t = (char *)hex + 2;
+	while (*t)
+	{
+		if (!ft_ishex(*t++))
+			return (0);
+	}
+	return (1);
+}
