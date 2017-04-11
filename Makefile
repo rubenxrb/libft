@@ -25,6 +25,7 @@ SRCN = 	memptrs.c memptrs2.c memptrs3.c	\
 OBJN =	$(SRCN:.c=.o)
 SRC =	$(addprefix $(SDIR),$(SRCN))
 OBJ =	$(addprefix $(ODIR),$(OBJN))
+ADDOBJD = $(addprefix $(ODIR),$(ADD))
 
 all: $(LIB)
 
@@ -42,17 +43,13 @@ mkobj:
 comp:
 	@ar rc $(LIB) $(OBJ)
 
-adds: mkadds $(ADDO)
+adds: $(ADDO)
 $(ADDO):$(ADDS)
-	@echo $@
-	@echo $<
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
-
-mkadds: mkobj
-	@mkdir -p $(addprefix $(ODIR),$(ADD))
 
 clean:
 	@$(RM) -rf $(ODIR)
+	@$(RM) -rf $(ADDO)
 	@printf "\x1b[36m[./obj/] <removed>\n\x1b[0m"
 
 fclean: clean
