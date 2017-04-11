@@ -8,10 +8,10 @@ INC = -Iinc
 ODIR = ./obj/
 SDIR = ./src/
 
-ADD = get_next_line
+ADD = get_next_line/
 ADDIR = $(addprefix $(SDIR),$(ADD))
-ADDS = $(wildcard $(ADDIR)/*.c)
-ADDO = $(subst $(SDIR),$(ODIR),$(ADDS:.c=.o))
+ADDS = $(shell find $(ADDIR) -name '*.c')
+ADDO = $(ADDS:.c=.o)
 SRCN = 	memptrs.c memptrs2.c memptrs3.c	\
 	convert.c convert2.c				\
 	identifiers.c identifiers2.c		\
@@ -44,6 +44,8 @@ comp:
 
 adds: mkadds $(ADDO)
 $(ADDO):$(ADDS)
+	@echo $@
+	@echo $<
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 mkadds: mkobj
