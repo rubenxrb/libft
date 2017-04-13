@@ -26,15 +26,12 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 
-void	free_tab(void **ap, size_t size)
+void	free_tab(char **ap)
 {
-	size_t	i;
-
-	i = 0;
-	while (size--)
+	if (!ap)
+		return ;
+	while (*ap)
 	{
-		if (*(ap + i))
-			ft_memdel(&*(ap + i));
-		i++;
+		ft_memdel(&*ap++);
 	}
 }

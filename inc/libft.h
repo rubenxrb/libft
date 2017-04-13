@@ -189,6 +189,8 @@ t_snode				*stack_push(t_snode *top, t_snode *new);
 t_snode				*stack_pop(t_snode *top);
 t_snode				*stack_lookup(t_snode *top, t_snode *node);
 int					snode_del(t_snode *node);
+t_snode				*stack_last(t_snode	*top);
+void				stack_del(t_snode *top);
 
 //	misc
 int					ft_digitnum(int n, int base);
