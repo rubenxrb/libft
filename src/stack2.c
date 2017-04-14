@@ -31,7 +31,7 @@ size_t		stack_len(t_snode *top)
 	if (!top)
 		return (0);
 	size = 1;
-	while (top && i++)
+	while (top && size++)
 		top = top->prev;
 	return (size);
 }
