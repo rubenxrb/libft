@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // memcmp, <free-tab>, <empty>, <empty> & <empty>
+#include "libft.h" // memcmp, <empty>, <empty>, <empty> & <empty>
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
@@ -24,14 +24,4 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 			if (*p1++ != *p2++)
 				return (*(--p1) - *(--p2));
 	return (0);
-}
-
-void	free_tab(char **ap)
-{
-	if (!ap)
-		return ;
-	while (*ap)
-	{
-		ft_memdel(&*ap++);
-	}
 }

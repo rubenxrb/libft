@@ -93,7 +93,6 @@ void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *p, int c, size_t n);
 void				*ft_memrchr(const void *p, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
-void				free_tab(void **ap, size_t size);
 
 //	convert
 int					ft_atoi(const char *str);
@@ -149,6 +148,7 @@ char				*ft_strinsrt(const char *dst, size_t n, const char *src);
 size_t				count_words(const char *str);
 char				*get_next_word(const char *s, char **word);
 char				**split_blnk(const char *str);
+void				free_tab(char **ap);
 
 //	prints
 void				ft_putchar(int c);
@@ -191,6 +191,7 @@ t_snode				*stack_lookup(t_snode *top, t_snode *node);
 int					snode_del(t_snode *node);
 t_snode				*stack_last(t_snode	*top);
 void				stack_del(t_snode *top);
+size_t				stack_len(t_snode *top);
 
 //	misc
 int					ft_digitnum(int n, int base);

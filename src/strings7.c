@@ -59,3 +59,11 @@ char	**split_blnk(const char *str)
 	tab[i] = 0;
 	return (tab);
 }
+
+void	free_tab(char **ap)
+{
+	if (!ap)
+		return ;
+	while (*ap)
+		ft_strdel(&*ap++);
+}
