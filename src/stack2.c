@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft.h"	// <s_last>, <s_del>, <s_len>
 
 t_snode		*stack_last(t_snode	*top)
 {
@@ -24,14 +24,30 @@ t_snode		*stack_last(t_snode	*top)
 	return (last);
 }
 
+void		stack_del(t_snode *top)
+{
+	t_snode	*tmp;
+
+	if (!top)
+		return ;
+	while (top)
+	{
+		tmp = top->prev;
+		snode_del(top);
+		top = tmp;
+	}
+}
+
 size_t		stack_len(t_snode *top)
 {
 	size_t	size;
 
-	if (!top)
-		return (0);
-	size = 1;
-	while (top && size++)
-		top = top->prev;
-	return (size);
+	if (top)
+	{
+		size = 0;
+		while (top && size++)
+			top = top->prev;
+		return (size);
+	}
+	return (0);
 }

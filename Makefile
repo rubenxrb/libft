@@ -21,7 +21,7 @@ SRCN = 	memptrs.c memptrs2.c memptrs3.c	\
 	prints.c prints2.c prints3.c		\
 	linkdlst.c linkdlst2.c				\
 	btree.c	nbtree.c misc.c				\
-	stack.c stack2.c
+	stack.c stack2.c array.c
 
 OBJN =	$(SRCN:.c=.o)
 SRC =	$(addprefix $(SDIR),$(SRCN))

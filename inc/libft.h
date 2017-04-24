@@ -63,7 +63,7 @@ typedef struct		s_lst
 {
 	void			*head;
 	void			*tail;
-	size_t			size;
+	size_t			len;
 }					t_lst;
 
 typedef struct		s_btree
@@ -76,8 +76,16 @@ typedef struct		s_btree
 typedef struct		s_stack
 {
 	struct s_snode	*top;
-	size_t			size;
+	size_t			len;
 }					t_stack;
+
+typedef struct		s_array
+{
+	void			*data;
+	size_t			d_size;
+	size_t			len;
+	size_t			bytes;
+}					t_array;
 
 // memptrs
 void				*ft_memalloc(size_t size);
@@ -166,14 +174,14 @@ void				ft_puthexnl(int n); /* need */
 void				set_color(int c);
 
 //	linkedlst
-t_node				*ft_lstnew(void const *data, size_t d_size);
-void				ft_lstdel(t_node **head, void (*bzero)(void *, size_t));
-void				ft_lstadd(t_node **head, t_node *new);
-void				ft_lstiter(t_node *head, void (*f)(t_node *node));
-t_node				*ft_lstmap(t_node *head, t_node *(*f)(t_node *node));
-void				ft_lstadd_back(t_node **head, t_node *new);
-size_t				ft_lstlen(t_node *head);
-t_node				*ft_addnodeback(t_node *tail, t_node *new); /* need */
+t_node				*ft_lstnew(void const *data, size_t d_size);				//ok
+void				ft_lstdelone(t_node **curr, void (*bzero)(void *, size_t));	//ok <test>
+void				ft_lstdel(t_node **head, void (*bzero)(void *, size_t));	//needs update
+void				ft_lstadd(t_node **head, t_node *new);						//needs update
+void				ft_lstiter(t_node *head, void (*f)(t_node *node));			//ok <test>
+t_node				*ft_lstmap(t_node *head, t_node *(*f)(t_node *node));		//ok <test>
+void				ft_lstadd_back(t_node **head, t_node *new);					//ok
+size_t				ft_lstlen(t_node *head);									//test
 
 // binarytree
 t_bnode				*bt_new(void const *data, size_t d_size);
@@ -184,14 +192,21 @@ int					btn_lookup(t_nbnode *tree, const int n);
 t_nbnode			*btn_insert(t_nbnode *tree, const int n);
 
 // stack
-t_snode				*snode_new(void const *data, size_t d_size);
-t_snode				*stack_push(t_snode *top, t_snode *new);
-t_snode				*stack_pop(t_snode *top);
-t_snode				*stack_lookup(t_snode *top, t_snode *node);
-int					snode_del(t_snode *node);
-t_snode				*stack_last(t_snode	*top);
-void				stack_del(t_snode *top);
-size_t				stack_len(t_snode *top);
+t_snode				*snode_new(void const *data, size_t d_size); 				//ok
+t_snode				*stack_push(t_snode *top, t_snode *new);					//ok
+t_snode				*stack_pop(t_snode *top);									//ok
+t_snode				*stack_lookup(t_snode *top, t_snode *node);					//ok
+void				snode_del(t_snode *node);									//ok
+t_snode				*stack_last(t_snode	*top);									//ok
+void				stack_del(t_snode *top);									//ok
+size_t				stack_len(t_snode *top);									//needs test [ok]
+
+//array
+t_array				*array_new(void *data, size_t d_size, size_t len);			//ok
+t_array				*array_resize(t_array *old, size_t new_size);				//ok
+t_array				*array_clone(t_array *src);									//ok
+void				array_destroy(t_array *curr);								//ok
+void 				*array_look(t_array *curr, size_t index);					//ok
 
 //	misc
 int					ft_digitnum(int n, int base);

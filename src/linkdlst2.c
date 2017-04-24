@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"	// lstmap, lstadd-back, lstlen, <*lstadd-tail> & <empty>
+#include "libft.h"	// lstmap, lstadd-back, lstlen, <empty> & <empty>
 
 t_node	*ft_lstmap(t_node *lst, t_node *(*f)(t_node *elem))
 {
@@ -56,11 +56,4 @@ size_t	ft_lstlen(t_node *head)
 		count++;
 	}
 	return (count);
-}
-
-t_node	*ft_lstadd_tail(t_node **alst, t_lst *new)
-{
-	(void)alst;
-	(void)new;
-	return (0);
 }

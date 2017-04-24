@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft.h" // snode_new, <s_push>, <s_pop>, <s_look> & <snode_del>
 
 t_snode		*snode_new(void const *data, size_t d_size)
 {
@@ -19,10 +19,8 @@ t_snode		*snode_new(void const *data, size_t d_size)
 	new = ft_memalloc(sizeof(t_snode));
 	if (!new)
 		return (0);
-	new->prev = 0;
-	if (!data)
-		new->data = 0;
-	else if (d_size && data)
+	new->d_size = d_size;
+	if (d_size && data)
 	{
 		new->data = ft_memalloc(d_size);
 		if (!new->data)
@@ -32,7 +30,6 @@ t_snode		*snode_new(void const *data, size_t d_size)
 		}
 		new->data = ft_memcpy(new->data, data, d_size);
 	}
-	new->d_size = d_size;
 	return (new);
 }
 
@@ -60,11 +57,13 @@ t_snode		*stack_lookup(t_snode *top, t_snode *node)
 	return (top == node ? node : 0);
 }
 
-int			snode_del(t_snode *node)
+void		snode_del(t_snode *node)
 {
-	if (!node)
-		return (0);
-	ft_memdel(&node->data);
-	ft_memdel((void **)node);
-	return (1);
+	if (node)
+	{
+		node->d_size = 0;
+		if (node->data)
+			ft_memdel(&node->data);
+		ft_memdel((void **)&node);
+	}
 }

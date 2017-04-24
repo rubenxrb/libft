@@ -39,21 +39,21 @@ t_node	*ft_lstnew(void const *data, size_t data_size)
 	return (head);
 }
 
-void	ft_lstdelone(t_node **curr, void (*del)(void *, size_t))
+void	ft_lstdelone(t_node **curr, void (*bzero)(void *, size_t))
 {
 	if (*curr)
 	{
-		del((*curr)->data, (*curr)->d_size);
+		bzero((*curr)->data, (*curr)->d_size);
 		ft_memdel((void **)curr);
 	}
 }
 
-void	ft_lstdel(t_node **alst, void (*del)(void *, size_t))
+void	ft_lstdel(t_node **alst, void (*bzero)(void *, size_t))
 {
-	if (*alst && del)
+	if (*alst && bzero)
 	{
-		ft_lstdel(&(*alst)->next, del);
-		ft_lstdelone(alst, del);
+		ft_lstdel(&(*alst)->next, bzero);
+		ft_lstdelone(alst, bzero);
 	}
 }
 

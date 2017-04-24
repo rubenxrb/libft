@@ -53,7 +53,7 @@ void	*ft_realloc(void *ptr, size_t size, size_t new_size)
 
 	if (!(new = ft_memalloc(new_size)))
 		return (0);
-	if ((size) && (ptr))
+	if (size && ptr)
 	{
 		new = ft_memcpy(new, ptr, size);
 		ft_memdel(&ptr);
