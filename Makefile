@@ -9,9 +9,10 @@ ODIR = ./obj/
 SDIR = ./src/
 
 ADD = get_next_line/
-ADDIR = $(addprefix $(SDIR),$(ADD))
-ADDS = $(shell find $(ADDIR) -name '*.c')
-ADDO = $(ADDS:.c=.o)
+ADDSRC = $(addprefix $(SDIR),$(ADD)src/)
+ADDS = get_next_line.c
+ADDSN = $(addprefix $(ADDSRC),$(ADDS))
+ADDO = $(addprefix $(ODIR),$(addsuffix $(ADDS:.c=.o),$(ADD)))
 SRCN = 	memptrs.c memptrs2.c memptrs3.c	\
 	convert.c convert2.c				\
 	identifiers.c identifiers2.c		\
@@ -44,9 +45,12 @@ mkobj:
 comp:
 	@ar rc $(LIB) $(OBJ)
 
-adds: $(ADDO)
-$(ADDO):$(ADDS)
+adds: mkadd $(ADDO)
+$(ADDO):$(addprefix $(ADDSRC),$(ADDS))
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+
+mkadd:
+	@mkdir -p $(addprefix $(ODIR),$(ADD))
 
 clean:
 	@$(RM) -rf $(ODIR)
