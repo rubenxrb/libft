@@ -183,7 +183,7 @@ t_node				*ft_lstmap(t_node *head, t_node *(*f)(t_node *node));		//ok <test>
 void				ft_lstadd_back(t_node **head, t_node *new);					//ok
 size_t				ft_lstlen(t_node *head);									//test
 
-// binarytree
+// binarytrees
 t_bnode				*bt_new(void const *data, size_t d_size);
 t_bnode				*bt_lookup(t_bnode *tree, void const *data, size_t d_size);
 t_bnode				*bt_insert(t_bnode *tree, void const *data, size_t d_size);
