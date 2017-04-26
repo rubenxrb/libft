@@ -1,6 +1,6 @@
 #include "libft.h"	// <arr_new>, <arr_resize>, <arr_clone>, <arr_look> & <arr_dstroy>
 
-t_array	*array_new(void *data, size_t d_size, size_t len)
+t_array	*array_new(size_t d_size, size_t len)
 {
 	t_array	*new;
 
@@ -14,8 +14,6 @@ t_array	*array_new(void *data, size_t d_size, size_t len)
 		ft_memdel((void **)new);
 		return (0);
 	}
-	if (data)
-		new->data = ft_memcpy(new->data, data, new->bytes);
 	new->d_size = d_size;
 	new->len = len;
 	return (new);
@@ -40,7 +38,7 @@ t_array	*array_resize(t_array *old, size_t new_size)
 	}
 	if (old->data)
 	{
-		new->data = ft_memcpy(new->data, old->data, new->bytes);
+		new->data = ft_memcpy(new->data, old->data, old->bytes);
 		ft_memdel(&old->data);
 	}
 	ft_memdel((void **)old);
