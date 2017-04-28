@@ -12,23 +12,28 @@
 
 #include "libft.h" // hextoa, utoutf8, <empty>, <empty> & <empty>
 
+/*	allocates "0x" prefixed str with hex value of n	*/
 char	*ft_hextoa(int n, size_t prec)
 {
-	char	*hex;
+	char	*tmp;
 	char	*num;
-	char	*z;
+	char	*hex;
 
 	num = ft_itoa_base(n, 16);
 	hex = num;
 	if (prec)
 	{
-		z = ft_strnew(prec);
-		(void)ft_memset(z, '0', prec);
-		hex = ft_strinsrt(num, 0, z);
+		tmp = ft_strnew(prec);
+		ft_memset(tmp, '0', prec);
+		hex = ft_strinsrt(num, 0, tmp);
+		ft_strdel(&tmp);
 	}
-	return (ft_strinsrt(hex, 0, "0x"));
+	hex = ft_strinsrt(num, 0, "0x");
+	ft_strdel(&num);
+	return (hex);
 }
 
+/*	writes utf8 encoded wchar to dest	*/
 int		uctoutf8(const char *dest, wchar_t ch)
 {
 	unsigned char	*p;
@@ -57,6 +62,7 @@ int		uctoutf8(const char *dest, wchar_t ch)
 	return ((void *)p == (void *)dest);
 }
 
+/*	converts hexstr to integer	*/
 int		ft_hextoi(const char *hex)
 {
 	t_byte	hex_p;

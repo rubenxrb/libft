@@ -10,21 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // putstr-fd, putendl-fd, putnbr, putnbr-fd & putendl
+#include "libft.h" // putendl-fd, putnbr, putnbr-fd & putendl
 
-void	ft_putstr_fd(char const *s, int fd)
+size_t	ft_putendl(char const *s)
 {
-	if (s)
-		while (*s)
-			ft_putchar_fd(*s++, fd);
+	size_t	len;
+
+	len = ft_putstr(s);
+	len += ft_putchar('\n');
+	return (len);
 }
 
-void	ft_putendl_fd(char const *s, int fd)
+size_t	ft_putendl_fd(char const *s, int fd)
 {
-	if (s)
-		while (*s)
-			ft_putchar_fd(*s++, fd);
-	ft_putchar_fd('\n', fd);
+	size_t	len;
+
+	len = ft_putstr_fd(s, fd);
+	len += ft_putchar_fd('\n', fd);
+	return (len);
 }
 
 void	ft_putnbr(int n)
@@ -63,11 +66,11 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(n + '0', fd);
 }
 
-void	ft_putendl(char const *s)
+void	ft_putnbrnl(int c)
 {
-	if (s)
+	if (c)
 	{
-		ft_putstr(s);
+		ft_putnbr(c);
 		ft_putchar('\n');
 	}
 }

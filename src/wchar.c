@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prints.c                                           :+:      :+:    :+:   */
+/*   wchar.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,43 +10,55 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // putchar, putchar-fd, putstr, print-bits & <empty>
+#include "libft.h"
 #include <unistd.h>
 
-size_t	ft_putchar(const char ch)
+size_t	wchar_len(wchar_t ch)
 {
-	return (write(1, &ch, 1));
+	if (ch < 0x80)
+		return (1);
+	else if (ch < 0x800)
+		return (2);
+	else if (ch < 0x10000)
+		return (3);
+	else if (ch < 0x110000)
+		return (4);
+	return (0);
 }
 
-size_t	ft_putchar_fd(const char ch, int fd)
+size_t	wcharput(const wchar_t ch)
 {
-	return (write(fd, &ch, 1));
+	wchar_t	c;
+
+	(void)uctoutf8((char *)&c, ch);
+	if (ch < 0x80)
+		write(1, &c, 1);
+	else if (ch < 0x800)
+		write(1, &c, 2);
+	else if (ch < 0x10000)
+		write(1, &c, 3);
+	else if (ch < 0x110000)
+		write(1, &c, 4);
+	return (wchar_len(ch));
 }
 
-size_t	ft_putstr(const char *s)
+size_t	wstrput(wchar_t const *s)
 {
-	return (write(1, s, ft_strlen(s)));
+	size_t	len;
+
+	len = 0;
+	while (s)
+		len += wcharput(*s++);
+	return (len);
 }
 
-size_t	ft_putstr_fd(char const *s, int fd)
+size_t	wstrlen(const wchar_t *s)
 {
-	return (write(fd, s, ft_strlen(s)));
-}
+	size_t	len;
 
-void	print_bits(unsigned char octet)
-{
-	int d;
-
-	d = 128;
-	while (d)
-	{
-		if (d <= octet)
-		{
-			write(1, "1", 1);
-			octet = octet % d;
-		}
-		else
-			write(1, "0", 1);
-		d /= 2;
-	}
+	len = 0;
+	if (s)
+		while (s)
+			len += wchar_len(*s++);
+	return (0);
 }

@@ -108,9 +108,10 @@ char				*ft_itoa(int n);
 char				*ft_itoa_base(int n, int base);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-char				*ft_hextoa(int n, size_t prec); /* need */
-int					uctoutf8(const char *dest, wchar_t ch);
-int					ft_hextoi(const char *hex);
+
+char				*ft_hextoa(int n, size_t prec); 				/* [test] */
+int					uctoutf8(const char *dest, wchar_t ch);			/* [ok] */
+int					ft_hextoi(const char *hex);						/* [ok] */
 
 //	identifiers
 int					ft_isalpha(int c);
@@ -121,7 +122,6 @@ int					ft_isprint(int c);
 int					ft_isblank(int c);
 int					ft_ishex(int c);
 int					ft_ishexstr(const char *hex);
-int					ft_isemoji(int c); /* need */
 
 //	strings
 size_t				ft_strlen(const char *s);
@@ -159,19 +159,27 @@ char				**split_blnk(const char *str);
 void				free_tab(char **ap);
 
 //	prints
-void				ft_putchar(int c);
-void				ft_putstr(char const *s);
-void				ft_putendl(char const *s);
-void				ft_putchar_fd(int c, int fd);
-void				ft_putstr_fd(char const *s, int fd);
-void				ft_putendl_fd(char const *s, int fd);
-void				ft_putnbr(int n);
-void				ft_putnbr_fd(int n, int fd);
+size_t				ft_putchar(const char ch);				/* [ok] */
+size_t				ft_putchar_fd(const char ch, int fd);	/* [ok] */
+size_t				ft_putstr(char const *s);				/* [ok] */
+size_t				ft_putstr_fd(char const *s, int fd);	/* [ok] */
 void				ft_print_bits(unsigned char byte);
-void				ft_putnbrnl(int n);
-void				ft_puthex(int n); /* need */
-void				ft_puthexnl(int n); /* need */
-void				set_color(int c);
+// prints2
+size_t				ft_putendl(char const *s);				/* [ok] */
+size_t				ft_putendl_fd(char const *s, int fd);	/* [ok] */
+void				ft_putnbr(int n);						/* rework */
+void				ft_putnbr_fd(int n, int fd);			/* rework */
+void				ft_putnbrnl(int n);						/* rework */
+// prints3
+size_t				ft_puthex(int c, size_t prec);			/* [ok] */
+size_t				ft_puthexnl(int c, size_t prec);		/* [ok] */
+void				set_color(int c);						/* test */
+
+//	wchars
+size_t				wchar_len(wchar_t ch);					/* ok */
+size_t				wcharput(const wchar_t ch);				/* ok [utf8] */
+size_t				wstrput(wchar_t const *s);				/* ok [test] */
+size_t				wstrlen(const wchar_t *s);				/* ok */
 
 //	linkedlst
 t_node				*ft_lstnew(void const *data, size_t d_size);				//ok
@@ -182,6 +190,9 @@ void				ft_lstiter(t_node *head, void (*f)(t_node *node));			//ok <test>
 t_node				*ft_lstmap(t_node *head, t_node *(*f)(t_node *node));		//ok <test>
 void				ft_lstadd_back(t_node **head, t_node *new);					//ok
 size_t				ft_lstlen(t_node *head);									//test
+
+/* linked lst need */
+void				destroy_lst(t_lst *lst); //destroys a t_lst, frees nodes
 
 // binarytrees
 t_bnode				*bt_new(void const *data, size_t d_size);
@@ -202,13 +213,13 @@ void				stack_del(t_snode *top);									//ok
 size_t				stack_len(t_snode *top);									//needs test [ok]
 
 //array
-t_array				*array_new(void *data, size_t d_size, size_t len);			//ok
+t_array				*array_new(size_t d_size, size_t len);						//ok
 t_array				*array_resize(t_array *old, size_t new_size);				//ok
 t_array				*array_clone(t_array *src);									//ok
 void				array_destroy(t_array *curr);								//ok
 void 				*array_look(t_array *curr, size_t index);					//ok
 
 //	misc
-int					ft_digitnum(int n, int base);
+int					ft_numlen(int n, int base);
 
 #endif

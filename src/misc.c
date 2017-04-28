@@ -12,7 +12,7 @@
 
 #include "libft.h"	// digitnum, <empty>, <empty>, <empty> & <empty>
 
-int					ft_digitnum(int n, int base)
+int					ft_numlen(int n, int base)
 {
 	int		i;
 

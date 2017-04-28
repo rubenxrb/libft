@@ -12,27 +12,24 @@
 
 #include "libft.h"	// putnbr-nl, puthex, puthex-nl, set-color & <empty>
 
-void	ft_putnbrnl(int c)
+size_t	ft_puthex(int c, size_t prec)
 {
-	if (c)
-	{
-		ft_putnbr(c);
-		ft_putchar('\n');
-	}
+	char	*hex;
+	size_t	len;
+
+	hex = ft_hextoa(c, prec);
+	len = ft_putstr(hex);
+	ft_strdel(&hex);
+	return (len);
 }
 
-void	ft_puthex(int c)
+size_t	ft_puthexnl(int c, size_t prec)
 {
-	(void)c;
-}
+	size_t	len;
 
-void	ft_puthexnl(int c)
-{
-	if (c)
-	{
-		ft_puthex(c);
-		ft_putchar('\n');
-	}
+	len = ft_puthex(c, prec);
+	len += ft_putchar('\n');
+	return (len);
 }
 
 void	set_color(int c)

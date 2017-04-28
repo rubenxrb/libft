@@ -8,20 +8,24 @@ INC = -Iinc
 ODIR = ./obj/
 SDIR = ./src/
 
-ADD = get_next_line/
-ADDSRC = $(addprefix $(SDIR),$(ADD)src/)
-ADDS = get_next_line.c
-ADDSN = $(addprefix $(ADDSRC),$(ADDS))
-ADDO = $(addprefix $(ODIR),$(addsuffix $(ADDS:.c=.o),$(ADD)))
-SRCN = 	memptrs.c memptrs2.c memptrs3.c		\
-	convert.c convert2.c			\
+GNLSRC = $(addprefix $(SDIR),get_next_line/src/)
+PFSRC = $(addprefix $(SDIR),ft_printf/src/)
+GNLS = get_next_line.c
+PFS = ft_printf.c get_var.c helpers.c	\
+	conv.c print_var.c read_var.c
+PFN = $(addprefix $(PFSRC),$(PFS))
+GNLN = $(addprefix $(GNLSRC),$(GNLS))
+GNLO = $(addprefix $(ODIR)get_next_line/,$(GNLS:.c=.o))
+PFO = $(addprefix $(ODIR)ft_printf/,$(PFS:.c=.o))
+SRCN = 	memptrs.c memptrs2.c memptrs3.c	\
+	convert.c convert2.c				\
 	identifiers.c identifiers2.c		\
 	strings.c strings2.c strings3.c		\
 	strings4.c strings5.c strings6.c	\
-	strings7.c				\
+	strings7.c wchar.c					\
 	prints.c prints2.c prints3.c		\
-	linkdlst.c linkdlst2.c			\
-	btree.c	nbtree.c misc.c			\
+	linkdlst.c linkdlst2.c				\
+	btree.c	nbtree.c misc.c				\
 	stack.c stack2.c array.c
 
 OBJN =	$(SRCN:.c=.o)
@@ -45,12 +49,17 @@ mkobj:
 comp:
 	@ar rc $(LIB) $(OBJ)
 
-adds: mkadd $(ADDO)
-$(ADDO):$(addprefix $(ADDSRC),$(ADDS))
+adds: mkadd $(GNLO) $(PFO)
+
+$(GNLO):$(GNLN)
+	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+
+$(PFO):$(PFN)
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 mkadd:
-	@mkdir -p $(addprefix $(ODIR),$(ADD))
+	@mkdir -p $(addprefix $(ODIR),get_next_line/)
+	@mkdir -p $(addprefix $(ODIR),ft_printf/)
 
 clean:
 	@$(RM) -rf $(ODIR)

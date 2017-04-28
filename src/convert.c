@@ -36,7 +36,7 @@ char	*ft_itoa(int n)
 	char	s;
 	size_t	index;
 
-	index = ft_digitnum(n, 10);
+	index = ft_numlen(n, 10);
 	if ((s = (n < 0) ? 1 : 0))
 		index++;
 	if (!(p = ft_strnew(index)))
@@ -63,7 +63,7 @@ char	*ft_itoa_base(int n, int b)
 	int		mod;
 
 	neg = 0;
-	size = ft_digitnum(n, b);
+	size = ft_numlen(n, b);
 	if (n < 0 && b == 10)
 		neg++;
 	num = ft_strnew(size);
