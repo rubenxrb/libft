@@ -9,14 +9,9 @@ ODIR = ./obj/
 SDIR = ./src/
 
 GNLSRC = $(addprefix $(SDIR),get_next_line/src/)
-PFSRC = $(addprefix $(SDIR),ft_printf/src/)
 GNLS = get_next_line.c
-PFS = ft_printf.c get_var.c helpers.c	\
-	conv.c print_var.c read_var.c
-PFN = $(addprefix $(PFSRC),$(PFS))
 GNLN = $(addprefix $(GNLSRC),$(GNLS))
 GNLO = $(addprefix $(ODIR)get_next_line/,$(GNLS:.c=.o))
-PFO = $(addprefix $(ODIR)ft_printf/,$(PFS:.c=.o))
 SRCN = 	memptrs.c memptrs2.c memptrs3.c	\
 	convert.c convert2.c				\
 	identifiers.c identifiers2.c		\
@@ -31,12 +26,11 @@ SRCN = 	memptrs.c memptrs2.c memptrs3.c	\
 OBJN =	$(SRCN:.c=.o)
 SRC =	$(addprefix $(SDIR),$(SRCN))
 OBJ =	$(addprefix $(ODIR),$(OBJN))
-ADDOBJD = $(addprefix $(ODIR),$(ADD))
 
 all: $(LIB)
 
 $(LIB): src adds
-	@ar rc $(LIB) $(ADDO)
+	@ar rc $(LIB) $(GNLO)
 	@printf "\x1b[32m[./libft.a] <compiled>\n\x1b[0m"
 
 src: mkobj $(OBJ) comp
@@ -49,22 +43,17 @@ mkobj:
 comp:
 	@ar rc $(LIB) $(OBJ)
 
-adds: mkadd $(GNLO) $(PFO)
+adds: mkadd $(GNLO)
 
 $(GNLO):$(GNLN)
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
-$(PFO):$(PFN)
-	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
-
 mkadd:
 	@mkdir -p $(addprefix $(ODIR),get_next_line/)
-	@mkdir -p $(addprefix $(ODIR),ft_printf/)
 
 clean:
 	@$(RM) -rf $(ODIR)
 	@$(RM) -rf $(ADDO)
-	@printf "\x1b[36m[./obj/] <removed>\n\x1b[0m"
 
 fclean: clean
 	@$(RM) -rf $(LIB)
