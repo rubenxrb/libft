@@ -32,7 +32,7 @@ t_node	*ft_lstnew(void const *data, size_t data_size)
 			ft_memdel((void **)head);
 			return (0);
 		}
-		ft_memcpy(head->data, data, data_size);
+		head->data = ft_memcpy(head->data, data, data_size);
 		head->d_size = data_size;
 	}
 	head->next = 0;

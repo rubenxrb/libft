@@ -153,7 +153,6 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strinsrt(const char *dst, size_t n, const char *src);
-size_t				count_words(const char *str);
 char				*get_next_word(const char *s, char **word);
 char				**split_blnk(const char *str);
 void				free_tab(char **ap);
@@ -184,15 +183,25 @@ size_t				wstrlen(const wchar_t *s);				/* ok */
 //	linkedlst
 t_node				*ft_lstnew(void const *data, size_t d_size);				//ok
 void				ft_lstdelone(t_node **curr, void (*bzero)(void *, size_t));	//ok <test>
-void				ft_lstdel(t_node **head, void (*bzero)(void *, size_t));	//needs update
+void				ft_lstdel(t_node **head, void (*bzero)(void *, size_t));		// <testing>
 void				ft_lstadd(t_node **head, t_node *new);						//needs update
 void				ft_lstiter(t_node *head, void (*f)(t_node *node));			//ok <test>
 t_node				*ft_lstmap(t_node *head, t_node *(*f)(t_node *node));		//ok <test>
 void				ft_lstadd_back(t_node **head, t_node *new);					//ok
 size_t				ft_lstlen(t_node *head);									//test
 
-/* linked lst need */
-void				destroy_lst(t_lst *lst); //destroys a t_lst, frees nodes
+//	dlinklst
+t_dlnode			*dlnode_new(void const *data, size_t data_size);
+t_byte				dlnode_del(t_dlnode **lst, void (*bzero)(void *, size_t));
+size_t				dlinklst_del(t_dlnode **lst, void (*bzero)(void *, size_t));
+void				dlnode_addnext(t_dlnode *curr, t_dlnode *add);
+t_dlnode			*update_tail(t_dlnode *head);
+
+// dlinklst 2
+t_dlnode			*split_dlinklst(t_dlnode **starting);
+t_dlnode			*dlinklst_sort(t_dlnode **head, t_byte (*cmp)(void *, void *));
+t_dlnode			*dlinklst_merge(t_dlnode *lst, t_dlnode *tmp, t_byte (*cmp)(void *, void *));
+
 
 // binarytrees
 t_bnode				*bt_new(void const *data, size_t d_size);

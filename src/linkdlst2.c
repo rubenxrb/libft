@@ -57,3 +57,9 @@ size_t	ft_lstlen(t_node *head)
 	}
 	return (count);
 }
+
+void				destroy_dlst(t_lst *lst)
+{
+	(void)lst;
+	return ;
+}
