@@ -162,7 +162,8 @@ size_t				ft_putchar(const char ch);				/* [ok] */
 size_t				ft_putchar_fd(const char ch, int fd);	/* [ok] */
 size_t				ft_putstr(char const *s);				/* [ok] */
 size_t				ft_putstr_fd(char const *s, int fd);	/* [ok] */
-void				ft_print_bits(unsigned char byte);
+size_t				putcstr(char const *s, size_t col);
+
 // prints2
 size_t				ft_putendl(char const *s);				/* [ok] */
 size_t				ft_putendl_fd(char const *s, int fd);	/* [ok] */
@@ -173,6 +174,7 @@ void				ft_putnbrnl(int n);						/* rework */
 size_t				ft_puthex(int c, size_t prec);			/* [ok] */
 size_t				ft_puthexnl(int c, size_t prec);		/* [ok] */
 void				set_color(int c);						/* test */
+void				ft_print_bits(unsigned char byte);
 
 //	wchars
 size_t				wchar_len(wchar_t ch);					/* ok */

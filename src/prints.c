@@ -33,20 +33,12 @@ size_t	ft_putstr_fd(char const *s, int fd)
 	return (write(fd, s, ft_strlen(s)));
 }
 
-void	print_bits(unsigned char octet)
+size_t	putcstr(char const *s, size_t col)
 {
-	int d;
+	size_t	ln;
 
-	d = 128;
-	while (d)
-	{
-		if (d <= octet)
-		{
-			write(1, "1", 1);
-			octet = octet % d;
-		}
-		else
-			write(1, "0", 1);
-		d /= 2;
-	}
+	set_color(col);
+	ln = ft_putstr(s);
+	set_color(0);
+	return (ln);
 }

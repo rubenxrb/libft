@@ -38,3 +38,21 @@ void	set_color(int c)
 	ft_putnbr(c);
 	ft_putchar('m');
 }
+
+void	print_bits(unsigned char octet)
+{
+	int d;
+
+	d = 128;
+	while (d)
+	{
+		if (d <= octet)
+		{
+			ft_putchar('1');
+			octet = octet % d;
+		}
+		else
+			ft_putchar('0');
+		d /= 2;
+	}
+}
