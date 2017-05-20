@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // hextoa, utoutf8, <empty>, <empty> & <empty>
+#include "libft.h" // hextoa, utoutf8, <hextoi>, <lltoa-base> & <uitoa_base>
 
-/*	allocates "0x" prefixed str with hex value of n	*/
 char	*ft_hextoa(int n, size_t prec)
 {
 	char	*tmp;
@@ -33,7 +32,6 @@ char	*ft_hextoa(int n, size_t prec)
 	return (hex);
 }
 
-/*	writes utf8 encoded wchar to dest	*/
 int		uctoutf8(const char *dest, wchar_t ch)
 {
 	unsigned char	*p;
@@ -62,7 +60,6 @@ int		uctoutf8(const char *dest, wchar_t ch)
 	return ((void *)p == (void *)dest);
 }
 
-/*	converts hexstr to integer	*/
 int		ft_hextoi(const char *hex)
 {
 	t_byte	hex_p;
@@ -83,4 +80,45 @@ int		ft_hextoi(const char *hex)
 		ret = (ret << 4) | (hex_p & 0xF);
 	}
 	return (ret);
+}
+
+char	*ft_lltoa_base(long long n, int b)
+{
+	char		*num;
+	size_t		size;
+	int			neg;
+	long		mod;
+
+	neg = 0;
+	size = ft_lnumlen(n, b);
+	if (n < 0 && b == 10)
+		neg++;
+	num = ft_strnew(size);
+	if (neg)
+		num[0] = '-';
+	num[size + neg] = 0;
+	while (size--)
+	{
+		mod = ((n % b) < 0 ? -(n % b) : (n % b));
+		num[size + neg] = ((mod > 9) ? mod + 55 : mod + '0');
+		n /= b;
+	}
+	return (num);
+}
+
+char	*ft_uitoa_base(unsigned int n, int b)
+{
+	char	*num;
+	size_t	len;
+	size_t	mod;
+
+	len = ft_unumlen(n, b);
+	num = ft_strnew(len);
+	while (len--)
+	{
+		mod = n % b;
+		num[len] = ((mod > 9) ? mod + 55 : mod + '0');
+		n /= b;
+	}
+	return (num);
 }

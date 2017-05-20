@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // is-blank, *is-emoji, <empty>, <empty> & <empty>
+#include "libft.h" // is-blank, <ishex>, <ishexstr>, <islower> & <isupper>
 
 int		ft_isblank(int c)
 {
@@ -38,4 +38,14 @@ int		ft_ishexstr(const char *hex)
 			return (0);
 	}
 	return (1);
+}
+
+int		ft_islower(int c)
+{
+	return (c >= 'a' && c <= 'z');
+}
+
+int		ft_isupper(int c)
+{
+	return (c >= 'A' && c <= 'Z');
 }

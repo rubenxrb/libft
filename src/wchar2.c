@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wchar.c                                            :+:      :+:    :+:   */
+/*   wchar2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,62 +13,57 @@
 #include "libft.h"
 #include <unistd.h>
 
-size_t	wchar_len(wchar_t ch)
+wchar_t	*wstrdup(const wchar_t *src)
 {
-	if (ch < 0x80)
-		return (1);
-	else if (ch < 0x800)
-		return (2);
-	else if (ch < 0x10000)
-		return (3);
-	else
-		return (4);
+	wchar_t	*new;
+	size_t	len;
+
+	if (!src)
+		return (0);
+	len = wstrlen(src);
+	if (!len)
+		return (0);
+	new = wstrnew(len * sizeof(wchar_t));
+	if (!new)
+		return (0);
+	new = ft_memcpy(new, src, sizeof(wchar_t) * len);
+	return (new);
 }
 
-size_t	wcharput(const wchar_t ch)
+wchar_t	*wchardup(const wchar_t src)
+{
+	wchar_t	*new;
+
+	new = ft_memalloc(sizeof(wchar_t));
+	if (!new)
+		return (0);
+	return (ft_memcpy(new, &src, sizeof(wchar_t)));
+}
+
+size_t	wcharput_fd(const wchar_t ch, const int fd)
 {
 	wchar_t	c;
 
-	(void)uctoutf8((char *)&c, ch);
+	uctoutf8((char *)&c, ch);
 	if (ch < 0x80)
-		write(1, &c, 1);
+		write(fd, &c, 1);
 	else if (ch < 0x800)
-		write(1, &c, 2);
+		write(fd, &c, 2);
 	else if (ch < 0x10000)
-		write(1, &c, 3);
+		write(fd, &c, 3);
 	else if (ch < 0x110000)
-		write(1, &c, 4);
+		write(fd, &c, 4);
 	return (wchar_len(ch));
 }
 
-size_t	wstrput(wchar_t const *s)
+size_t	wstrput_fd(const wchar_t *src, const int fd, size_t len)
 {
-	size_t	len;
+	size_t	r;
 
-	len = 0;
-	if (s)
-		while (s[len])
-			len++;
-	return (len);
-}
-
-size_t	wstrlen(const wchar_t *s)
-{
-	size_t	len;
-
-	len = 0;
-	if (s)
-		while (s)
-			len += wchar_len(*s++);
-	return (0);
-}
-
-wchar_t	*wstrnew(size_t len)
-{
-	wchar_t	*s;
-
-	s = ft_memalloc((sizeof(wchar_t) * len));
-	if (!s)
-		return (0);
-	return (s);
+	r = 0;
+	while (len--)
+	{
+		r += wcharput_fd(*src++, fd);
+	}
+	return (r);
 }

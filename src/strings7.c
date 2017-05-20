@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   strings7.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/05 01:01:09 by rromero           #+#    #+#             */
+/*   Updated: 2017/03/05 01:01:11 by rromero          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	count_words(const char *str)
@@ -66,4 +78,11 @@ void	free_tab(char **ap)
 		return ;
 	while (*ap)
 		ft_strdel(&*ap++);
+}
+
+char	*ft_chardup(const int ch)
+{
+	if (ch)
+		return (ft_strdup((char *)&ch));
+	return (0);
 }
