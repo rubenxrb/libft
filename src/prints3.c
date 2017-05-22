@@ -56,3 +56,9 @@ void	print_bits(unsigned char octet)
 		d /= 2;
 	}
 }
+
+void	ft_tabprint(const char **tab)
+{
+	while (*tab)
+		ft_putendl(*tab++);
+}

@@ -17,7 +17,7 @@ t_snode		*snode_new(void const *data, size_t d_size)
 	t_snode	*new;
 
 	new = ft_memalloc(sizeof(t_snode));
-	if (!new)
+	if (!new || !data)
 		return (0);
 	new->d_size = d_size;
 	if (d_size && data)

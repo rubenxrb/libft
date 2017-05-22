@@ -12,13 +12,33 @@
 
 #include "libft.h"
 
-t_byte	lst_addstr(t_lst *list, const char *name)
+void	lst_addstr(t_lst *list, const char *str)
+{
+	t_node		*add;
+
+	if (!str)
+		return ;
+	if (!list->head)
+	{
+		list->head = ft_lstnew(str, ft_strlen(str) + 1);
+		list->tail = list->head;
+	}
+	else
+	{
+		add = ft_lstnew(str, ft_strlen(str) + 1);
+		((t_node *)(list->tail))->next = add;
+		list->tail = add;
+	}
+	list->len++;
+}
+
+void	lst_addnewarray(t_lst *list, const char *name)
 {
 	t_array		string;
 	t_node		*add;
 
 	if (!name)
-		return (0);
+		return ;
 	string.data = ft_strdup(name);
 	string.d_size = 1;
 	string.len = ft_strlen(name);
@@ -35,16 +55,15 @@ t_byte	lst_addstr(t_lst *list, const char *name)
 		list->tail = add;
 	}
 	list->len++;
-	return (1);
 }
 
-t_byte	lst_addwstr(t_lst *list, const wchar_t *name)
+void	lst_addwstr(t_lst *list, const wchar_t *name)
 {
 	t_array		string;
 	t_node		*add;
 
 	if (!name || !list)
-		return (0);
+		return ;
 	string.data = wstrdup(name);
 	string.d_size = sizeof(wchar_t);
 	string.len = wstrlen(name);
@@ -61,18 +80,17 @@ t_byte	lst_addwstr(t_lst *list, const wchar_t *name)
 		list->tail = add;
 	}
 	list->len++;
-	return (1);
 }
 
-t_byte	lst_addarray(t_lst *list, t_array *add)
+void	lst_addarray(t_lst *list, t_array *add)
 {
 	t_node	*new;
 
 	if (!add || !list)
-		return (0);
+		return ;
 	new = ft_memalloc(sizeof(t_node));
 	if (!new)
-		return (0);
+		return ;
 	new->data = add;
 	if (!list->head)
 	{
@@ -85,5 +103,26 @@ t_byte	lst_addarray(t_lst *list, t_array *add)
 		list->tail = new;
 	}
 	list->len++;
-	return (1);
+}
+
+void	dllst_addstr(t_lst *lst, const char *str)
+{
+	t_dlnode	*add;
+	t_dlnode	*tmp;
+
+	if (!str)
+		return ;
+	if (!lst->head)
+	{
+		lst->head = dlnode_new(str, ft_strlen(str) + 1);
+		lst->tail = lst->head;
+	}
+	else
+	{
+		tmp = lst->tail;
+		add = dlnode_new(str, ft_strlen(str) + 1);
+		dlnode_addnext(tmp, add);
+		lst->tail = add;
+	}
+	lst->len++;
 }

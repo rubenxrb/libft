@@ -177,6 +177,7 @@ size_t				ft_puthex(int c, size_t prec);
 size_t				ft_puthexnl(int c, size_t prec);
 void				set_color(int c);
 void				ft_print_bits(unsigned char byte);
+void				ft_tabprint(const char **tab);
 
 size_t				wchar_len(wchar_t ch);
 size_t				wcharput(const wchar_t ch);
@@ -189,8 +190,15 @@ wchar_t				*wchardup(const wchar_t src);
 size_t				wcharput_fd(const wchar_t ch, const int fd);
 size_t				wstrput_fd(const wchar_t *src, const int fd, size_t len);
 
-t_byte				lst_addstr(t_lst *list, const char *name);
-t_byte				lst_addarray(t_lst *list, t_array *add);
+void				lst_addstr(t_lst *list, const char *str);
+void				lst_addnewarray(t_lst *list, const char *name);/*allocates new content */
+void				lst_addwstr(t_lst *list, const wchar_t *name);
+void				lst_addarray(t_lst *list, t_array *add);/*connects ptr*/
+void				dllst_addstr(t_lst *list, const char *str);
+
+void				dllst_delstr(t_lst *list, const char *str, t_byte head);
+t_dlnode			*dllst_findstr(t_lst *list, const char *str, t_byte head);
+void				dllst_print(t_lst *list, t_byte head);
 
 t_node				*ft_lstnew(void const *data, size_t d_size);
 void				ft_lstdelone(t_node **curr, void (*bzero)(void *, size_t));

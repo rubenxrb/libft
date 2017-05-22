@@ -3,7 +3,7 @@ LIB = libft.a
 CC = gcc
 RM = /bin/rm
 CFLAGS = -Wall -Werror -Wextra
-INC = -Iinc
+INC = -Iinc -Isrc/get_next_line/inc
 
 ODIR = ./obj/
 SDIR = ./src/
@@ -15,13 +15,13 @@ GNLO = $(addprefix $(ODIR)get_next_line/,$(GNLS:.c=.o))
 SRCN = array.c array2.c btree.c btree2.c convert.c	\
 	convert2.c convert3.c dlinkdlst.c dlinkdlst2.c	\
 	identifiers.c identifiers2.c identifiers3.c		\
-	linkdlst.c linkdlst2.c lst.c memptrs.c			\
+	linkdlst.c linkdlst2.c lst.c lst2.c memptrs.c	\
 	memptrs2.c memptrs3.c misc.c nbtree.c prints.c	\
 	prints2.c prints3.c stack.c stack2.c strings.c	\
 	strings2.c strings3.c strings4.c strings5.c		\
 	strings6.c strings7.c strings8.c wchar.c		\
 	wchar2.c
-	
+
 OBJN =	$(SRCN:.c=.o)
 SRC =	$(addprefix $(SDIR),$(SRCN))
 OBJ =	$(addprefix $(ODIR),$(OBJN))
