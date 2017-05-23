@@ -41,7 +41,7 @@ t_dlnode	*dlnode_new(void const *data, size_t data_size)
 	return (new);
 }
 
-t_byte	dlnode_del(t_dlnode **node, void (*bzero)(void *, size_t))
+t_byte	dlnode_free(t_dlnode **node)
 {
 	if (!*node)
 		return (0);
@@ -49,20 +49,22 @@ t_byte	dlnode_del(t_dlnode **node, void (*bzero)(void *, size_t))
 		(*node)->next->prev = (*node)->prev;
 	if ((*node)->prev)
 		(*node)->prev->next = (*node)->next;
-	bzero((*node)->data, (*node)->d_size);
+	ft_memdel((void **)&(*node)->data);
 	ft_memdel((void **)node);
 	return (1);
 }
 
-size_t	dlinklst_del(t_dlnode **lst, void (*bzero)(void *, size_t))
+size_t	dlinklst_free(t_dlnode **lst)
 {
 	size_t	len;
 
 	len = 0;
-	if (*lst && bzero)
+	if (!lst)
+		return (0);
+	if (*lst)
 	{
-		len += dlinklst_del(&(*lst)->next, bzero);
-		dlnode_del(lst, bzero);
+		len += dlinklst_free(&(*lst)->next);
+		dlnode_free(lst);
 		len++;
 	}
 	return (len);

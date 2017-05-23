@@ -196,9 +196,10 @@ void				lst_addwstr(t_lst *list, const wchar_t *name);
 void				lst_addarray(t_lst *list, t_array *add);/*connects ptr*/
 void				dllst_addstr(t_lst *list, const char *str);
 
-void				dllst_delstr(t_lst *list, const char *str, t_byte head);
 t_dlnode			*dllst_findstr(t_lst *list, const char *str, t_byte head);
+void				dllst_delstr(t_lst *list, const char *str, t_byte head);
 void				dllst_print(t_lst *list, t_byte head);
+void				dllst_del(t_lst *list);
 
 t_node				*ft_lstnew(void const *data, size_t d_size);
 void				ft_lstdelone(t_node **curr, void (*bzero)(void *, size_t));
@@ -210,8 +211,8 @@ void				ft_lstadd_back(t_node **head, t_node *new);
 size_t				ft_lstlen(t_node *head);
 
 t_dlnode			*dlnode_new(void const *data, size_t data_size);
-t_byte				dlnode_del(t_dlnode **lst, void (*bzero)(void *, size_t));
-size_t				dlinklst_del(t_dlnode **lst, void (*bzero)(void *, size_t));
+t_byte				dlnode_free(t_dlnode **node);
+size_t				dlinklst_free(t_dlnode **lst);
 void				dlnode_addnext(t_dlnode *curr, t_dlnode *add);
 t_dlnode			*update_tail(t_dlnode *head);
 
