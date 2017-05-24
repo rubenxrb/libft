@@ -108,6 +108,7 @@ int					ft_tolower(int c);
 char				*ft_lltoa_base(long long n, int b);
 char				*ft_uitoa_base(unsigned int n, int b);
 char				*ft_ulltoa_base(unsigned long long n, int b);
+char				escape_seq(char seq[2]);
 
 char				*ft_hextoa(int n, size_t prec);
 int					uctoutf8(const char *dest, wchar_t ch);
@@ -124,6 +125,7 @@ int					ft_ishexstr(const char *hex);
 int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isletter(char c1, char c2);
+int					isEscapeSeq(char *seq, size_t s_len);
 
 size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s1);

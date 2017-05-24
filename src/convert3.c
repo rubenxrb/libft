@@ -28,3 +28,28 @@ char	*ft_ulltoa_base(unsigned long long n, int b)
 	}
 	return (num);
 }
+
+char	escape_seq(char seq[2])
+{
+	if (!ft_strncmp(seq, "\'", 2))
+		return (0x27);
+	else if (!ft_strncmp(seq, "\\", 2))
+		return (0x5c);
+	else if (!ft_strncmp(seq, "\"", 2))
+		return (0x22);
+	else if (!ft_strncmp(seq, "\n", 2))
+		return (0x0a);
+	else if (!ft_strncmp(seq, "\r", 2))
+		return (0x0d);
+	else if (!ft_strncmp(seq, "\b", 2))
+		return (0x08);
+	else if (!ft_strncmp(seq, "\t", 2))
+		return (0x09);
+	else if (!ft_strncmp(seq, "\f", 2))
+		return (0x0c);
+	else if (!ft_strncmp(seq, "\a", 2))
+		return (0x07);
+	else if (!ft_strncmp(seq, "\v", 2))
+		return (0x0b);
+	return (0);
+}

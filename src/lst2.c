@@ -1,4 +1,5 @@
 #include "libft.h"
+#include <stdio.h>
 
 t_dlnode	*dllst_findstr(t_lst *list, const char *str, t_byte head)
 {
@@ -9,7 +10,7 @@ t_dlnode	*dllst_findstr(t_lst *list, const char *str, t_byte head)
 	tmp = head ? list->head : list->tail;
 	while (tmp)
 	{
-		if (!ft_strcmp(tmp->data, str))
+		if (!ft_strncmp(tmp->data, str, ft_strlen(str)))
 			return (tmp);
 		tmp = head ? tmp->next : tmp->prev;
 	}

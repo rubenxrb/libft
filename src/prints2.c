@@ -68,9 +68,6 @@ void	ft_putnbr_fd(int n, int fd)
 
 void	ft_putnbrnl(int c)
 {
-	if (c)
-	{
-		ft_putnbr(c);
-		ft_putchar('\n');
-	}
+	ft_putnbr(c);
+	ft_putchar('\n');
 }
