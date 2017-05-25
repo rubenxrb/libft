@@ -29,33 +29,33 @@ OBJ =	$(addprefix $(ODIR),$(OBJN))
 all: $(LIB)
 
 $(LIB): src adds
-	@ar rc $(LIB) $(GNLO)
+	ar rc $(LIB) $(GNLO)
 	@printf "\x1b[32m[./libft.a] <compiled>\n\x1b[0m"
 
 src: mkobj $(OBJ) comp
 $(ODIR)%.o:$(SDIR)%.c
-	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 mkobj:
-	@mkdir -p $(ODIR)
+	mkdir -p $(ODIR)
 
 comp:
-	@ar rc $(LIB) $(OBJ)
+	ar rc $(LIB) $(OBJ)
 
 adds: mkadd $(GNLO)
 
 $(GNLO):$(GNLN)
-	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 mkadd:
-	@mkdir -p $(addprefix $(ODIR),get_next_line/)
+	mkdir -p $(addprefix $(ODIR),get_next_line/)
 
 clean:
-	@$(RM) -rf $(ODIR)
-	@$(RM) -rf $(ADDO)
+	$(RM) -rf $(ODIR)
+	$(RM) -rf $(ADDO)
 
 fclean: clean
-	@$(RM) -rf $(LIB)
+	$(RM) -rf $(LIB)
 	@printf "\x1b[31m[./libft.a] <removed>\n\x1b[0m"
 
 re: fclean all
