@@ -167,7 +167,7 @@ size_t				ft_putchar(const char ch);
 size_t				ft_putchar_fd(const char ch, int fd);
 size_t				ft_putstr(char const *s);
 size_t				ft_putstr_fd(char const *s, int fd);
-size_t				putcstr(char const *s, size_t col);
+size_t				ft_putnstr_fd(const char *s, size_t len, int fd);
 
 size_t				ft_putendl(char const *s);
 size_t				ft_putendl_fd(char const *s, int fd);
@@ -180,6 +180,9 @@ size_t				ft_puthexnl(int c, size_t prec);
 void				set_color(int c);
 void				ft_print_bits(unsigned char byte);
 void				ft_tabprint(const char **tab);
+
+size_t				putcstr(char const *s, size_t col);
+size_t				putcnstr(char const *s, size_t len, size_t col);
 
 size_t				wchar_len(wchar_t ch);
 size_t				wcharput(const wchar_t ch);

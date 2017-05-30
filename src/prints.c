@@ -33,12 +33,7 @@ size_t	ft_putstr_fd(char const *s, int fd)
 	return (write(fd, s, ft_strlen(s)));
 }
 
-size_t	putcstr(char const *s, size_t col)
+size_t	ft_putnstr_fd(const char *s, size_t len, int fd)
 {
-	size_t	ln;
-
-	set_color(col);
-	ln = ft_putstr(s);
-	set_color(0);
-	return (ln);
+	return (write(fd, s, len));
 }

@@ -17,10 +17,10 @@ SRCN = array.c array2.c btree.c btree2.c convert.c	\
 	identifiers.c identifiers2.c identifiers3.c		\
 	linkdlst.c linkdlst2.c lst.c lst2.c memptrs.c	\
 	memptrs2.c memptrs3.c misc.c nbtree.c prints.c	\
-	prints2.c prints3.c stack.c stack2.c strings.c	\
-	strings2.c strings3.c strings4.c strings5.c		\
-	strings6.c strings7.c strings8.c wchar.c		\
-	wchar2.c
+	prints2.c prints3.c prints4.c stack.c stack2.c	\
+	strings.c strings2.c strings3.c strings4.c		\
+	strings5.c strings6.c strings7.c strings8.c		\
+	wchar.c wchar2.c
 
 OBJN =	$(SRCN:.c=.o)
 SRC =	$(addprefix $(SDIR),$(SRCN))
