@@ -1,0 +1,25 @@
+libft > categories > source (extras included for complete libft)
+ex:
+	mem/ print/ conv/ wide/ gnl/ printf/ structs/
+-	-	-	-	-	-	-	-	-
+to do:
+re code corelib > full libft (structs: arrays, lists, stack, queue, trees, trie)
+	1. write makefile to fit source code
+	2. test all core functions -> optimize fastest option
+	3. clean up functions -> remove trash
+	4. write all basic functions for data structures
+
+re code gnl
+	pass all tests, get the fastest reading possible
+re code printf
+	pass all tests, memory free, print on the fly, optimized options
+re code ft_ls > make it faster that og ls
+	binary tree see if it works, code better printing functions, less reading, better fileparser
+re code minishell > 42sh (tab autocomp, at least 15 builtins, piping, multitasking -> manage bg jobs)
+	try trie data struct for autocomp, else dynamic array for optimization, maybe a list for job queue
+code fract_ol > make multithreading for fast rendering
+	clean algorithms to calculate, gui, probably a fractal picker menu, color option parser
+code push_swap > optimize for fast calculation
+	use needed data structure for fastest math calculation > dynamic programming
+
+makefile: corelib.a > coregnl.a > libprintf.a > libft.a (complete)
