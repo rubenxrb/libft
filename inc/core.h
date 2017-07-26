@@ -3,6 +3,8 @@
 
 # include <stddef.h>
 
+typedef struct s_slln t_slln;
+
 void	*ft_memalloc(size_t size);						//libft
 void	*ft_memset(void *p, int c, size_t size);				//libft
 void	ft_memdel(void **ap);							//libft
@@ -62,11 +64,11 @@ void	ft_putnbr(int n);							//libft
 void	ft_putnbr_fd(int n, int fd);						//libft
 //void	ft_putnbrnl(int n);							//libft
 
-t_node	*ft_lstnew(void const *data, size_t d_size);				//libft
-void	ft_lstdelone(t_node **curr, void (*bzero)(void *, size_t));		//libft
-void	ft_lstdel(t_node **head, void (*bzero)(void *, size_t));		//libft
-void	ft_lstadd(t_node **head, t_node *new);					//libft
-void	ft_lstiter(t_node *head, void (*f)(t_node *node));			//libft
-t_node	*ft_lstmap(t_node *head, t_node *(*f)(t_node *node));			//libft
+t_slln	*ft_lstnew(void const *data, size_t d_size);				//libft
+void	ft_lstdelone(t_slln **curr, void (*bzero)(void *, size_t));		//libft
+void	ft_lstdel(t_slln **head, void (*bzero)(void *, size_t));		//libft
+void	ft_lstadd(t_slln **head, t_slln *new);					//libft
+void	ft_lstiter(t_slln *head, void (*f)(t_slln *node));			//libft
+t_slln	*ft_lstmap(t_slln *head, t_slln *(*f)(t_slln *node));			//libft
 
 #endif
