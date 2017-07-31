@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "structs.h"
 
 t_array	*array_new(size_t d_size, size_t len)
 {

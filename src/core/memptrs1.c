@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" //memalloc (malloc), bzero, memset, memdel & realloc
 #include <stdlib.h>
+#include "core.h"
 
 void	*ft_memset(void *p, int c, size_t size)
 {
@@ -45,18 +45,4 @@ void	ft_memdel(void **ap)
 		free(*ap);
 		*ap = 0;
 	}
-}
-
-void	*ft_realloc(void *ptr, size_t size, size_t new_size)
-{
-	void	*new;
-
-	if (!(new = ft_memalloc(new_size)))
-		return (0);
-	if (size && ptr)
-	{
-		new = ft_memcpy(new, ptr, size);
-		ft_memdel(&ptr);
-	}
-	return (new);
 }

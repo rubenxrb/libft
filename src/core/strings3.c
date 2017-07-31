@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // strstr, strnstr, strcmp, strncmp & strrev
+#include "core.h"
 
 char	*ft_strstr(const char *big, const char *little)
 {

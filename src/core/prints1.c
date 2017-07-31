@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   identifiers.c                                      :+:      :+:    :+:   */
+/*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 00:46:36 by rromero           #+#    #+#             */
-/*   Updated: 2017/03/05 00:46:37 by rromero          ###   ########.fr       */
+/*   Created: 2017/03/05 01:16:18 by rromero           #+#    #+#             */
+/*   Updated: 2017/03/05 01:16:19 by rromero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // is-alpha, is-digit, is-alnum, is-ascii & is-printable
+#include <unistd.h>
+#include "core.h"
 
-int		ft_isalpha(int c)
+size_t	ft_putchar(const char ch)
 {
-	return (((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')));
+	return (write(1, &ch, 1));
 }
 
-int		ft_isdigit(int c)
+size_t	ft_putchar_fd(const char ch, int fd)
 {
-	return ((c >= 48 && c <= 57));
+	return (write(fd, &ch, 1));
 }
 
-int		ft_isalnum(int c)
+size_t	ft_putstr(const char *s)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	return (write(1, s, ft_strlen(s)));
 }
 
-int		ft_isascii(int c)
+size_t	ft_putstr_fd(char const *s, int fd)
 {
-	return ((c >= 0 && c <= 127));
+	return (write(fd, s, ft_strlen(s)));
 }
 
-int		ft_isprint(int c)
+size_t	ft_putnstr_fd(const char *s, size_t len, int fd)
 {
-	return ((c >= 32 && c <= 126));
+	return (write(fd, s, len));
 }

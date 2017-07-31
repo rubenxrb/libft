@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // atoi, itoa, itoa-base, to-upper & to-lower
+#include "core.h"
 
 int		ft_atoi(const char *str)
 {

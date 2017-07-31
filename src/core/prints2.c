@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // putendl-fd, putnbr, putnbr-fd & putendl
+#include "core.h"
 
 size_t	ft_putendl(char const *s)
 {

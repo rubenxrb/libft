@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // strcat, strncat, strlcat, strchr & strrchr
+#include "core.h"
 
 char	*ft_strcat(char *restrict s1, const char *restrict s2)
 {

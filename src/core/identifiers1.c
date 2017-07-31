@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memptrs3.c                                         :+:      :+:    :+:   */
+/*   identifiers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 00:36:12 by rromero           #+#    #+#             */
-/*   Updated: 2017/03/05 00:36:13 by rromero          ###   ########.fr       */
+/*   Created: 2017/03/05 00:46:36 by rromero           #+#    #+#             */
+/*   Updated: 2017/03/05 00:46:37 by rromero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // memcmp, <empty>, <empty>, <empty> & <empty>
+#include "core.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int		ft_isalpha(int c)
 {
-	unsigned char	*p1;
-	unsigned char	*p2;
+	return (((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')));
+}
 
-	p1 = (unsigned char *)s1;
-	p2 = (unsigned char *)s2;
-	if (n > 0)
-		while (n--)
-			if (*p1++ != *p2++)
-				return (*(--p1) - *(--p2));
-	return (0);
+int		ft_isdigit(int c)
+{
+	return ((c >= 48 && c <= 57));
+}
+
+int		ft_isalnum(int c)
+{
+	return (ft_isalpha(c) || ft_isdigit(c));
+}
+
+int		ft_isascii(int c)
+{
+	return ((c >= 0 && c <= 127));
+}
+
+int		ft_isprint(int c)
+{
+	return ((c >= 32 && c <= 126));
 }

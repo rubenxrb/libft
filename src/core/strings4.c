@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // strdel, strclr, striter, striteri, strmap
+#include "core.h"
 
 void	ft_strdel(char **as)
 {

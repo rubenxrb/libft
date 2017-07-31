@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // strtrim, strsplit, <wordcount>, <nextword> & strinsrt
+#include "core.h"
 
 char		*ft_strtrim(char const *s)
 {
