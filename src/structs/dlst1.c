@@ -11,13 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-t_dlnode	*dlnode_new(void const *data, size_t data_size)
+t_dlln	*dlnode_new(void const *data, size_t data_size)
 {
-	t_dlnode	*new;
+	t_dlln	*new;
 
-	new = ft_memalloc(sizeof(t_dlnode));
+	new = ft_memalloc(sizeof(t_dlln));
 	if (!new)
 		return (0);
 	if (!data)
@@ -41,7 +40,7 @@ t_dlnode	*dlnode_new(void const *data, size_t data_size)
 	return (new);
 }
 
-t_byte	dlnode_free(t_dlnode **node)
+t_byte	dlnode_free(t_dlln **node)
 {
 	if (!*node)
 		return (0);
@@ -54,7 +53,7 @@ t_byte	dlnode_free(t_dlnode **node)
 	return (1);
 }
 
-size_t	dlinklst_free(t_dlnode **lst)
+size_t	dlinklst_free(t_dlln **lst)
 {
 	size_t	len;
 
@@ -70,7 +69,7 @@ size_t	dlinklst_free(t_dlnode **lst)
 	return (len);
 }
 
-void	dlnode_addnext(t_dlnode *curr, t_dlnode *add)
+void	dlnode_addnext(t_dlln *curr, t_dlln *add)
 {
 	if (!curr || !add)
 		return ;
@@ -82,9 +81,9 @@ void	dlnode_addnext(t_dlnode *curr, t_dlnode *add)
 	curr = add;
 }
 
-t_dlnode	*update_tail(t_dlnode *head)
+t_dlln	*update_tail(t_dlln *head)
 {
-	t_dlnode	*tail;
+	t_dlln	*tail;
 
 	if (!head)
 		return (0);

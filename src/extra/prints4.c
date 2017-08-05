@@ -26,8 +26,9 @@ size_t	putcnstr(char const *s, size_t len, size_t col)
 {
 	size_t	ln;
 
+	(void)len;
 	set_color(col);
-	ln = ft_putnstr_fd(s, len, 1);
+	ln = ft_putstr_fd(s, 1);
 	set_color(0);
 	return (ln);
 }

@@ -12,33 +12,33 @@
 
 #include "libft.h"	// <s_last>, <s_del>, <s_len>
 
-t_snode		*stack_last(t_snode	*top)
+t_stckn		*stack_last(t_stckn	*top)
 {
-	t_snode	*last;
+	t_stckn	*last;
 
 	if (!top)
 		return (0);
 	last = top;
-	while (last && last->prev)
-		last = last->prev;
+	while (last && last->next)
+		last = last->next;
 	return (last);
 }
 
-void		stack_del(t_snode *top)
+void		stack_del(t_stckn *top)
 {
-	t_snode	*tmp;
+	t_stckn	*tmp;
 
 	if (!top)
 		return ;
 	while (top)
 	{
-		tmp = top->prev;
+		tmp = top->next;
 		snode_del(top);
 		top = tmp;
 	}
 }
 
-size_t		stack_len(t_snode *top)
+size_t		stack_len(t_stckn *top)
 {
 	size_t	size;
 
@@ -46,7 +46,7 @@ size_t		stack_len(t_snode *top)
 	{
 		size = 0;
 		while (top && size++)
-			top = top->prev;
+			top = top->next;
 		return (size);
 	}
 	return (0);

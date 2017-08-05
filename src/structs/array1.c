@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#include "libft.h"
 
 t_array	*array_new(size_t d_size, size_t len)
 {
@@ -21,7 +21,7 @@ t_array	*array_new(size_t d_size, size_t len)
 	if (!(new = ft_memalloc(sizeof(t_array))))
 		return (0);
 	new->bytes = (d_size * len);
-	if (!(new->data = ft_memalloc(new->bytes)))
+	if (!(new->array = ft_memalloc(new->bytes)))
 	{
 		ft_memdel((void **)new);
 		return (0);
@@ -39,19 +39,19 @@ t_array	*array_resize(t_array *old, size_t new_size)
 		return (0);
 	if (!(new = ft_memalloc(sizeof(t_array))))
 		return (0);
-	new->data = 0;
+	new->array = 0;
 	new->d_size = old->d_size;
 	new->len = new_size;
 	new->bytes = (new->d_size * new_size);
-	if (!(new->data = ft_memalloc(new->bytes + old->d_size)))
+	if (!(new->array = ft_memalloc(new->bytes + old->d_size)))
 	{
 		ft_memdel((void **)new);
 		return (0);
 	}
-	if (old->data)
+	if (old->array)
 	{
-		new->data = ft_memcpy(new->data, old->data, old->bytes);
-		ft_memdel(&old->data);
+		new->array = ft_memcpy(new->array, old->array, old->bytes);
+		ft_memdel(&old->array);
 	}
 	ft_memdel((void **)old);
 	return (new);
@@ -66,14 +66,14 @@ t_array	*array_clone(t_array *src)
 	if (!(new = ft_memalloc(sizeof(t_array))))
 		return (0);
 	new = ft_memcpy(new, src, sizeof(t_array));
-	new->data = 0;
-	if (!(new->data = ft_memalloc(new->bytes + new->d_size)))
+	new->array = 0;
+	if (!(new->array = ft_memalloc(new->bytes + new->d_size)))
 	{
 		ft_memdel((void **)new);
 		return (0);
 	}
-	if (src->data)
-		new->data = ft_memcpy(new->data, src->data, src->bytes);
+	if (src->array)
+		new->array = ft_memcpy(new->array, src->array, src->bytes);
 	return (new);
 }
 
@@ -81,8 +81,8 @@ void 	*array_look(t_array *curr, size_t index)
 {
 	if (curr && index < curr->len)
 	{
-		if (curr->data + (curr->d_size  * index))
-			return (curr->data + (curr->d_size * index));
+		if (curr->array + (curr->d_size  * index))
+			return (curr->array + (curr->d_size * index));
 	}
 	return (0);
 }
@@ -91,8 +91,8 @@ void	array_destroy(t_array *curr)
 {
 	if (curr)
 	{
-		if (curr->data)
-			ft_memdel(&curr->data);
+		if (curr->array)
+			ft_memdel(&curr->array);
 		ft_memdel((void **)&curr);
 	}
 }

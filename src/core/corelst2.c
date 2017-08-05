@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"	// lstmap, lstadd-back, lstlen, <empty> & <empty>
+#include "core.h"
 
-t_node	*ft_lstmap(t_node *lst, t_node *(*f)(t_node *elem))
+t_slln	*ft_lstmap(t_slln *lst, t_slln *(*f)(t_slln *elem))
 {
-	t_node	*node;
+	t_slln	*node;
 
 	if (!lst || !f)
 		return (0);
@@ -28,9 +28,9 @@ t_node	*ft_lstmap(t_node *lst, t_node *(*f)(t_node *elem))
 	return (node);
 }
 
-void	ft_lstadd_back(t_node **alst, t_node *new)
+void	ft_lstadd_back(t_slln **alst, t_slln *new)
 {
-	t_node	*node;
+	t_slln	*node;
 
 	if (!new || !alst)
 		return ;
@@ -45,7 +45,7 @@ void	ft_lstadd_back(t_node **alst, t_node *new)
 	}
 }
 
-size_t	ft_lstlen(t_node *head)
+size_t	ft_lstlen(t_slln *head)
 {
 	size_t	count;
 
@@ -58,7 +58,7 @@ size_t	ft_lstlen(t_node *head)
 	return (count);
 }
 
-void				destroy_dlst(t_lst *lst)
+void				destroy_dlst(t_slln *lst)
 {
 	(void)lst;
 	return ;

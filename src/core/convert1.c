@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   convert1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,6 +11,16 @@
 /* ************************************************************************** */
 
 #include "core.h"
+
+static int	ft_numlen(int n, int base)
+{
+	int		i;
+
+	i = 0;
+	while ((n = n / base))
+		i++;
+	return (i + 1);
+}
 
 int		ft_atoi(const char *str)
 {
@@ -30,31 +40,6 @@ int		ft_atoi(const char *str)
 	return ((s) ? -n : n);
 }
 
-char	*ft_itoa(int n)
-{
-	char	*p;
-	char	s;
-	size_t	index;
-
-	index = ft_numlen(n, 10);
-	if ((s = (n < 0) ? 1 : 0))
-		index++;
-	if (!(p = ft_strnew(index)))
-		return (0);
-	index = 0;
-	if (n == 0 || !(n))
-		p[index++] = '0';
-	while (n)
-	{
-		p[index++] = (s ? -(n % 10) : (n % 10)) + '0';
-		n /= 10;
-	}
-	if (s)
-		p[index++] = '-';
-	p[index] = 0;
-	return (ft_strrev(p));
-}
-
 char	*ft_itoa_base(int n, int b)
 {
 	char	*num;
@@ -64,7 +49,7 @@ char	*ft_itoa_base(int n, int b)
 
 	neg = 0;
 	size = ft_numlen(n, b);
-	if (n < 0 && b == 10)
+	if ((n < 0) && (b == 10))
 		neg++;
 	num = ft_strnew(size);
 	if (neg)
@@ -79,18 +64,7 @@ char	*ft_itoa_base(int n, int b)
 	return (num);
 }
 
-int		ft_toupper(int c)
+char	*ft_itoa(int n)
 {
-	if (ft_isalpha(c))
-		if (c >= 97 && c <= 122)
-			c -= 32;
-	return (c);
-}
-
-int		ft_tolower(int c)
-{
-	if (ft_isalpha(c))
-		if (c >= 65 && c <= 90)
-			c += 32;
-	return (c);
+	return (ft_itoa_base(n, 10));
 }

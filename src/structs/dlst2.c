@@ -1,13 +1,11 @@
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
 
-t_dlnode	*split_dlinklst(t_dlnode **starting)
+t_dlln	*split_dlinklst(t_dlln **starting)
 {
-	t_dlnode	*fast;
-	t_dlnode	*slow;
-	t_dlnode	*tmp;
+	t_dlln	*fast;
+	t_dlln	*slow;
+	t_dlln	*tmp;
 
 	fast = *starting;
 	slow = *starting;
@@ -21,7 +19,7 @@ t_dlnode	*split_dlinklst(t_dlnode **starting)
 	return (tmp);
 }
 
-t_dlnode	*dlinklst_merge(t_dlnode *lst, t_dlnode *tmp, t_byte (*cmp)(void *, void *))
+t_dlln	*dlinklst_merge(t_dlln *lst, t_dlln *tmp, t_byte (*cmp)(void *, void *))
 {
 	if (!lst)
 		return (tmp);
@@ -44,9 +42,9 @@ t_dlnode	*dlinklst_merge(t_dlnode *lst, t_dlnode *tmp, t_byte (*cmp)(void *, voi
 }
 
 
-t_dlnode	*dlinklst_sort(t_dlnode **head, t_byte (*cmp)(void *, void *))
+t_dlln	*dlinklst_sort(t_dlln **head, t_byte (*cmp)(void *, void *))
 {
-	t_dlnode	*tmp;
+	t_dlln	*tmp;
 
 	if (!*head || !(*head)->next)
 		return (*head);

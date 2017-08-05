@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-void	lst_addstr(t_lst *list, const char *str)
+void	lst_addstr(t_list *list, const char *str)
 {
-	t_node		*add;
+	t_slln		*add;
 
 	if (!str)
 		return ;
@@ -26,20 +26,20 @@ void	lst_addstr(t_lst *list, const char *str)
 	else
 	{
 		add = ft_lstnew(str, ft_strlen(str) + 1);
-		((t_node *)(list->tail))->next = add;
+		((t_slln *)(list->tail))->next = add;
 		list->tail = add;
 	}
 	list->len++;
 }
 
-void	lst_addnewarray(t_lst *list, const char *name)
+void	lst_addnewarray(t_list *list, const char *name)
 {
 	t_array		string;
-	t_node		*add;
+	t_slln		*add;
 
 	if (!name)
 		return ;
-	string.data = ft_strdup(name);
+	string.array = ft_strdup(name);
 	string.d_size = 1;
 	string.len = ft_strlen(name);
 	string.bytes = (string.len + 1);
@@ -51,20 +51,20 @@ void	lst_addnewarray(t_lst *list, const char *name)
 	else
 	{
 		add = ft_lstnew(&string, sizeof(t_array));
-		((t_node *)(list->tail))->next = add;
+		((t_slln *)(list->tail))->next = add;
 		list->tail = add;
 	}
 	list->len++;
 }
 
-void	lst_addwstr(t_lst *list, const wchar_t *name)
+void	lst_addwstr(t_list *list, const wchar_t *name)
 {
 	t_array		string;
-	t_node		*add;
+	t_slln		*add;
 
 	if (!name || !list)
 		return ;
-	string.data = wstrdup(name);
+	string.array = wstrdup(name);
 	string.d_size = sizeof(wchar_t);
 	string.len = wstrlen(name);
 	string.bytes = ((string.d_size * string.len) + sizeof(wchar_t));
@@ -76,19 +76,19 @@ void	lst_addwstr(t_lst *list, const wchar_t *name)
 	else
 	{
 		add = ft_lstnew(&string, sizeof(t_array));
-		((t_node *)(list->tail))->next = add;
+		((t_slln *)(list->tail))->next = add;
 		list->tail = add;
 	}
 	list->len++;
 }
 
-void	lst_addarray(t_lst *list, t_array *add)
+void	lst_addarray(t_list *list, t_array *add)
 {
-	t_node	*new;
+	t_slln	*new;
 
 	if (!add || !list)
 		return ;
-	new = ft_memalloc(sizeof(t_node));
+	new = ft_memalloc(sizeof(t_slln));
 	if (!new)
 		return ;
 	new->data = add;
@@ -99,16 +99,16 @@ void	lst_addarray(t_lst *list, t_array *add)
 	}
 	else
 	{
-		((t_node *)(list->tail))->next = new;
+		((t_slln *)(list->tail))->next = new;
 		list->tail = new;
 	}
 	list->len++;
 }
 
-void	dllst_addstr(t_lst *lst, const char *str)
+void	dllst_addstr(t_list *lst, const char *str)
 {
-	t_dlnode	*add;
-	t_dlnode	*tmp;
+	t_dlln	*add;
+	t_dlln	*tmp;
 
 	if (!str)
 		return ;

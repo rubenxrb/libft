@@ -12,11 +12,11 @@
 
 #include "libft.h" // snode_new, <s_push>, <s_pop>, <s_look> & <snode_del>
 
-t_snode		*snode_new(void const *data, size_t d_size)
+t_stckn		*snode_new(void const *data, size_t d_size)
 {
-	t_snode	*new;
+	t_stckn	*new;
 
-	new = ft_memalloc(sizeof(t_snode));
+	new = ft_memalloc(sizeof(t_stckn));
 	if (!new || !data)
 		return (0);
 	new->d_size = d_size;
@@ -33,31 +33,31 @@ t_snode		*snode_new(void const *data, size_t d_size)
 	return (new);
 }
 
-t_snode		*stack_push(t_snode *top, t_snode *new)
+t_stckn		*stack_push(t_stckn *top, t_stckn *new)
 {
 	if (!new || !top)
 		return (0);
-	new->prev = top;
+	new->next = top;
 	return (new);
 }
 
-t_snode		*stack_pop(t_snode *top)
+t_stckn		*stack_pop(t_stckn *top)
 {
 	if (!top)
 		return (0);
-	return (top->prev);
+	return (top->next);
 }
 
-t_snode		*stack_lookup(t_snode *top, t_snode *node)
+t_stckn		*stack_lookup(t_stckn *top, t_stckn *node)
 {
 	if (!top || !node)
 		return (0);
-	while ((top->prev) && top != node)
-		top = top->prev;
+	while ((top->next) && top != node)
+		top = top->next;
 	return (top == node ? node : 0);
 }
 
-void		snode_del(t_snode *node)
+void		snode_del(t_stckn *node)
 {
 	if (node)
 	{

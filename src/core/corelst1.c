@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"	// lstnew, lstdelone, lstdel, lstadd & lstiter
+#include "core.h"
 
-t_node	*ft_lstnew(void const *data, size_t data_size)
+t_slln	*ft_lstnew(void const *data, size_t data_size)
 {
-	t_node *head;
+	t_slln *head;
 
-	head = ft_memalloc(sizeof(t_node));
+	head = ft_memalloc(sizeof(t_slln));
 	if (!head)
 		return (0);
 	if (!data)
@@ -39,7 +39,7 @@ t_node	*ft_lstnew(void const *data, size_t data_size)
 	return (head);
 }
 
-void	ft_lstdelone(t_node **curr, void (*bzero)(void *, size_t))
+void	ft_lstdelone(t_slln **curr, void (*bzero)(void *, size_t))
 {
 	if (*curr)
 	{
@@ -48,7 +48,7 @@ void	ft_lstdelone(t_node **curr, void (*bzero)(void *, size_t))
 	}
 }
 
-void	ft_lstdel(t_node **alst, void (*bzero)(void *, size_t))
+void	ft_lstdel(t_slln **alst, void (*bzero)(void *, size_t))
 {
 	if (*alst && bzero)
 	{
@@ -57,7 +57,7 @@ void	ft_lstdel(t_node **alst, void (*bzero)(void *, size_t))
 	}
 }
 
-void	ft_lstadd(t_node **alst, t_node *new)
+void	ft_lstadd(t_slln **alst, t_slln *new)
 {
 	if (!alst || !new)
 		return ;
@@ -66,7 +66,7 @@ void	ft_lstadd(t_node **alst, t_node *new)
 	*alst = new;
 }
 
-void	ft_lstiter(t_node *lst, void (*f)(t_node *node))
+void	ft_lstiter(t_slln *lst, void (*f)(t_slln *node))
 {
 	if (!lst || !f)
 		return ;

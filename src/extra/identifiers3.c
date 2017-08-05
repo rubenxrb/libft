@@ -10,7 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" // <isletter>, <empty>, <empty>, <empty>, <empty>
+#include "libft.h"
+
+int		ft_ishex(int c)
+{
+	return ((c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f') || ft_isdigit(c));
+}
+
+int		ft_ishexstr(const char *hex)
+{
+	char	*t;
+
+	if (!hex)
+		return (0);
+	t = (char *)hex;
+	if (!ft_strncmp(hex, "0x", 2))
+		t = (char *)hex + 2;
+	while (*t)
+	{
+		if (!ft_ishex(*t++))
+			return (0);
+	}
+	return (1);
+}
 
 int		ft_isletter(char c1, char c2)
 {

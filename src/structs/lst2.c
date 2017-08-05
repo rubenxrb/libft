@@ -1,9 +1,8 @@
 #include "libft.h"
-#include <stdio.h>
 
-t_dlnode	*dllst_findstr(t_lst *list, const char *str, t_byte head)
+t_dlln	*dllst_findstr(t_list *list, const char *str, t_byte head)
 {
-	t_dlnode	*tmp;
+	t_dlln	*tmp;
 
 	if (!list || !list->len || !str)
 		return (0);
@@ -17,9 +16,9 @@ t_dlnode	*dllst_findstr(t_lst *list, const char *str, t_byte head)
 	return (0);
 }
 
-void	dllst_delstr(t_lst *list, const char *str, t_byte head)
+void	dllst_delstr(t_list *list, const char *str, t_byte head)
 {
-	t_dlnode	*del;
+	t_dlln	*del;
 
 	if (!list || !list->len || !str)
 		return ;
@@ -33,9 +32,9 @@ void	dllst_delstr(t_lst *list, const char *str, t_byte head)
 	dlnode_free(&del);
 }
 
-void	dllst_print(t_lst *list, t_byte head)
+void	dllst_print(t_list *list, t_byte head)
 {
-	t_dlnode	*tmp;
+	t_dlln	*tmp;
 
 	if (!list || !list->len)
 		return ;
@@ -47,9 +46,9 @@ void	dllst_print(t_lst *list, t_byte head)
 	}
 }
 
-void	dllst_del(t_lst *list)
+void	dllst_del(t_list *list)
 {
-	t_dlnode	*head;
+	t_dlln	*head;
 
 	if (!list)
 		return ;

@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memptrs3.c                                         :+:      :+:    :+:   */
+/*   convert2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rromero <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/05 00:36:12 by rromero           #+#    #+#             */
-/*   Updated: 2017/03/05 00:36:13 by rromero          ###   ########.fr       */
+/*   Created: 2017/03/05 00:39:14 by rromero           #+#    #+#             */
+/*   Updated: 2017/03/05 00:39:16 by rromero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "core.h"
 
-void	*ft_realloc(void *ptr, size_t size, size_t new_size)
+int		ft_toupper(int c)
 {
-	void	*new;
+	if (ft_isalpha(c))
+		if (c >= 97 && c <= 122)
+			c -= 32;
+	return (c);
+}
 
-	if (!(new = ft_memalloc(new_size)))
-		return (0);
-	if (size && ptr)
-	{
-		new = ft_memcpy(new, ptr, size);
-		ft_memdel(&ptr);
-	}
-	return (new);
+int		ft_tolower(int c)
+{
+	if (ft_isalpha(c))
+		if (c >= 65 && c <= 90)
+			c += 32;
+	return (c);
 }
