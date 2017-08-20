@@ -49,14 +49,15 @@ GOBJ = $(GOD)get_next_line.o
 .PHONY: all clean fclean re
 
 all:
-	@echo $(GSRC) $(GOBJ)
-	@$(MAKE) -j $(NAME) $(FULL)
+	@$(MAKE) -j --quiet $(NAME) $(FULL)
 
 $(NAME): $(COBJ)
 	@ar rc $(NAME) $(COBJ)
+	@printf "\x1b[32m[ $(NAME) ] <compiled>\n\x1b[0m"
 
 $(FULL): $(EOBJ) $(TOBJ) $(GOBJ)
 	@ar rc $(FULL) $(NAME) $(EOBJ) $(TOBJ) $(GOBJ)
+	@printf "\x1b[32m[ $(FULL) ] <compiled>\n\x1b[0m"
 
 b_core:
 	@mkdir -p $(COD)
@@ -65,21 +66,23 @@ b_extra:
 	@mkdir -p $(EOD) $(TOD) $(GOD)
 
 $(COD)%.o:$(CSD)%.c | b_core
-	$(CC) $(CFLGS) $(CINC) -c $< -o $@
+	@$(CC) $(CFLGS) $(CINC) -c $< -o $@
 
 $(EOD)%.o:$(ESD)%.c | b_extra
-	$(CC) $(CFLGS) $(CINC) $(GINC) -c $< -o $@
+	@$(CC) $(CFLGS) $(CINC) $(GINC) -c $< -o $@
 
 $(GOD)%.o:$(GSD)%.c | $(ESD)get_next_line/
-	$(CC) $(CFLGS) $(CINC) $(GINC) -c $< -o $@
+	@$(CC) $(CFLGS) $(CINC) $(GINC) -c $< -o $@
 
 $(TOD)%.o:$(TSD)%.c
-	$(CC) $(CFLGS) $(CINC) $(GINC) -c $< -o $@
+	@$(CC) $(CFLGS) $(CINC) $(GINC) -c $< -o $@
 
 clean:
-	$(RM) -rf $(ODIR)
+	@$(RM) -rf $(ODIR)
+	@printf "\x1b[31m[ ./obj/ ] <removed>\n\x1b[0m"
 
 fclean: clean
-	$(RM) -rf $(NAME) $(FULL)
+	@$(RM) -rf $(NAME) $(FULL)
+	@printf "\x1b[31m[ $(NAME) $(FULL) ] <removed>\n\x1b[0m"
 
 re: fclean all
